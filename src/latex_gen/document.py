@@ -32,8 +32,12 @@ class LatexEnvironment:
     def __init__(self, context):
         self.context = context
                 
+    def color(self, r, g, b):
+        self.context.f.write('\\color[rgb]{%s,%s,%s}' % (r, g, b))
+        
     def hfill(self):
         self.context.f.write('\\hfill\ \n')
+        
     def hspace(self, size):
         self.context.f.write('\\hspace{%s}' % size)
     
@@ -125,6 +129,24 @@ class LatexEnvironment:
             f.write(data)
         self.context.f.write('\\includegraphics[width=%s]{%s}%%\n' % (width, id))
    
+    @contextmanager
+    def minipage(self, width, align=''):
+        env = LatexEnvironment(self.context.child())
+        yield env
+        self.context.preamble.write(self.context.preamble.getvalue())
+        self.context.f.write('\\begin{minipage}[%s]{%s}\n' % (align, width))
+        self.context.f.write(env.context.f.getvalue())    
+        self.context.f.write('\\end{minipage}\n')
+        
+    @contextmanager
+    def fbox(self):
+        env = LatexEnvironment(self.context.child())
+        yield env
+        self.context.preamble.write(self.context.preamble.getvalue())
+        self.context.f.write('\\fbox{%\n')
+        self.context.f.write(env.context.f.getvalue())    
+        self.context.f.write('}%\n')
+    
     
 class LatexDocument(LatexEnvironment):
     def __init__(self, document_class, class_options, graphics_path="."):

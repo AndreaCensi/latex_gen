@@ -1,4 +1,17 @@
 from latex_gen.utils import latex_escape
+from contextlib import contextmanager
+#
+#@contextmanager
+#def fbox_context(x):
+#    yield 
+#    
+#def fbox(x):
+#    if isinstance(x, str):
+#        return '\\fbox{%s}' % x
+#    else:
+#        assert hasattr(x, '__exit__')
+#        return fbox_context(x)
+
 
 def env(name, content, param=None):
     s = '\\begin{%s}' % name

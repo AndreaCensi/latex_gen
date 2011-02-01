@@ -51,6 +51,8 @@ class LatexTestUtils(unittest.TestCase):
             shutil.copy(filename, d) 
             raise Exception('Could not compile file %r. Dumped on %s.' % (filename, d)) 
 
+        # TODO: include error from stderr
+        
     def get_error_file(self):
         pattern = 'error_doc_%03d.tex'
         for i in xrange(1000):

@@ -1,23 +1,22 @@
 import unittest 
-from latex_gen import Latex
 
-from .utils import LatexTestUtils
-from latex_gen.tests.utils import doc_idiom
+from .utils import LatexTestUtils, doc_idiom
+
 
 
 class TestIdioms(LatexTestUtils): 
 
     @doc_idiom
-    def testEmpty(doc):
+    def testEmpty(doc): #@NoSelf
         pass
 
     @doc_idiom
-    def testEmptyFigure(doc):
+    def testEmptyFigure(doc): #@NoSelf
         with doc.figure(caption="") as fig: #@UnusedVariable
             pass
 
     @doc_idiom
-    def testSubFigure(doc):
+    def testSubFigure(doc): #@NoSelf
         with doc.figure(caption="") as fig:
             with fig.subfigure(caption="fig1") as sub:
                 sub.text('ciao')
@@ -38,8 +37,4 @@ class TestIdioms(LatexTestUtils):
 
 
         
-        
-        
-if __name__ == "__main__":
-    #import sys;sys.argv = ['', 'Test.testName']
-    unittest.main()
+    

@@ -4,8 +4,8 @@ import os
 import subprocess
 import shutil
 
-from contextlib import contextmanager
-from latex_gen.document import Latex
+from contextlib import contextmanager 
+from latex_gen import latex_document
 
 def doc_idiom(f):
     def test_wrap(self):
@@ -27,7 +27,7 @@ class LatexTestUtils(unittest.TestCase):
     @contextmanager
     def check_doc_idiom(self):
         with self.get_random_file() as filename:
-            with Latex.document(filename) as doc:                        
+            with latex_document(filename) as doc:                        
                 yield doc 
             self.assert_compilable_file(filename)
 
@@ -35,7 +35,7 @@ class LatexTestUtils(unittest.TestCase):
     def assert_compilable_fragment(self, tex):
         ''' Asserts that the string *tex* is a compilable latex fragment.'''
         with self.get_random_file() as filename:
-            with Latex.document(filename) as doc: #@UnusedVariable
+            with latex_document(filename) as doc: #@UnusedVariable
                 doc.tex(tex)
             self.assert_compilable_file(filename)
     

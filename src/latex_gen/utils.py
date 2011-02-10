@@ -3,6 +3,7 @@ def latex_escape(s):
     s = s.replace('\\', '\\textbackslash ')
     s = s.replace('{', '\\{')
     s = s.replace('}', '\\}')
+    s = s.replace('^', '\\^')
     replace = {'_': '\\_', #'\\_', 
                '$': '\\$'
                }

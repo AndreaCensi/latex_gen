@@ -39,6 +39,9 @@ def small(content):
 def texttt(content): 
     return enclose('texttt', content)
 
+def emph(content): 
+    return enclose('emph', content)
+
 def verbatim_soft(content):
     return texttt(latex_escape(content))
 

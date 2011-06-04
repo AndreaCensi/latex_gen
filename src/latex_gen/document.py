@@ -67,17 +67,17 @@ class LatexEnvironment:
             self.context.f.write(" & ".join(entries))
             self.context.f.write(' \\tabularnewline\n')
             
-        alignment_string = '|r||' + ('r|' * len(col_desc))
+        alignment_string = '|l||' + ('r|' * len(col_desc))
         self.context.f.write('\\begin{tabular}{%s}\n' % alignment_string)
         hline()
         if write_col_desc:
-            row_tex = [''] + ['\\makebox[0.7cm]{%s}' % x for x in col_desc]
+            row_tex = [''] + ['\\makebox[1cm]{%s}' % x for x in col_desc]
             write_row_tex(row_tex)
             hline()
             hline()
         
         for i, row in enumerate(row_desc):
-            row_tex = ['\\makebox[2.3cm][r]{%s}' % row] + ['\\makebox[0.7cm]{%s}' % x for x in data[i]]
+            row_tex = ['\\makebox[5cm][r]{%s}' % row] + ['\\makebox[1cm]{%s}' % x for x in data[i]]
             write_row_tex(row_tex)
             hline()
             

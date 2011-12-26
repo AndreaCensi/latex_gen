@@ -1,10 +1,7 @@
-import unittest 
-
-from .utils import LatexTestUtils, doc_idiom
+from . import LatexTestUtils, doc_idiom
 
 
-
-class TestIdioms(LatexTestUtils): 
+class TestIdioms(LatexTestUtils):
 
     @doc_idiom
     def testEmpty(doc): #@NoSelf
@@ -22,7 +19,7 @@ class TestIdioms(LatexTestUtils):
                 sub.text('ciao')
             with fig.subfigure(caption="fig2") as sub:
                 sub.text('hello')
-                    
+
 #    def testGraphics(self):
 #        with tempfile.NamedTemporaryFile(suffix='tex') as tmp:
 #            filename = tmp.name
@@ -36,5 +33,5 @@ class TestIdioms(LatexTestUtils):
 #            self.try_compile(tmp)
 
 
-        
-    
+
+

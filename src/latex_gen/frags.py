@@ -2,7 +2,9 @@ from contextlib import contextmanager
 import os
 
 from .file_utils import make_sure_dir_exists
-from .document import LatexEnvironment, LatexContext, LatexDocument
+
+from . import LatexEnvironment, LatexContext, LatexDocument
+
 
 @contextmanager
 def latex_document(filename_or_stream,
@@ -29,7 +31,8 @@ def latex_document(filename_or_stream,
             document.dump_stream(f)
     else:
         document.dump_stream(filename_or_stream)
-    
+
+
 @contextmanager
 def latex_fragment(filename_or_stream, graphics_path=None):
     is_filename = isinstance(filename_or_stream, str)
@@ -46,12 +49,12 @@ def latex_fragment(filename_or_stream, graphics_path=None):
     ###        
     context = LatexContext(graphics_path=graphics_path)
     environment = LatexEnvironment(context)
-    
+
     yield environment
     ###        
     if is_filename:
         with open(filename_or_stream, 'w') as f:
-            f.write(context.f.getvalue())    
+            f.write(context.f.getvalue())
     else:
         filename_or_stream.write(context.f.getvalue())
 

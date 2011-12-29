@@ -1,3 +1,6 @@
+from contextlib import contextmanager
+
+
 def latex_escape(s):
     # Do this at the beginning
     s = s.replace('\\', '\\textbackslash ')
@@ -10,3 +13,14 @@ def latex_escape(s):
     for k in replace:
         s = s.replace(k, replace[k])
     return s
+
+
+@contextmanager
+def begin_end(stream, env_name, options={}):
+    stream.write('\\begin{%s}' % env_name)
+    if options:
+        stream.write('[%s]' % (options))
+    stream.write('%\n')
+
+    yield stream
+    stream.write('\\end{%s}%%\n' % env_name)

@@ -1,3 +1,4 @@
 *.egg*
 *pyc
 error_doc*tex
+latex_gen_demos

@@ -1,0 +1,3 @@
+class BadTex(Exception):
+    pass
+

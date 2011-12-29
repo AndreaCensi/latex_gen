@@ -9,6 +9,7 @@ class LatexEnvironment:
     def __init__(self, context):
         self.context = context
 
+    # todo: add verbatim
     def color(self, r, g, b):
         self.context.f.write('\\color[rgb]{%s,%s,%s}' % (r, g, b))
 
@@ -38,6 +39,7 @@ class LatexEnvironment:
         '''
         self.context.f.write(latex_escape(t))
 
+    # OLD function
     def tabular_simple(self, data, row_desc, col_desc, write_col_desc=True):
         ''' Writes a tabular environment with very simple options. '''
         def hline():
@@ -71,8 +73,8 @@ class LatexEnvironment:
     def input(self, filename): #@ReservedAssignment
         self.context.f.write('\\input{%s}\n' % filename)
 
-    def use_package(self, name, options=""):
-        self.context.preamble.write('\\usepackage[%s]{%s}\n' % (options, name))
+    def use_package(self, name, options={}):
+        self.context.use_package(name, options)
 
     @contextmanager
     def figure(self, caption=None, label=None, placement="t", double=False):
@@ -90,10 +92,12 @@ class LatexEnvironment:
         tabular.dump(main_context=self.context)
 
     def longtable(self, alignment):
+        # XXX: add yield
         return self.tabular(alignment, env='longtable')
 
     def graphics_data(self, data, mime, width="3cm", gid=None):
         # TODO: allow free width
+        # TODO: require graphicx
         suffix = mimetypes.guess_extension(mime)
         if gid is None:
             gid = self.context.generate_file_id()
@@ -119,13 +123,31 @@ class LatexEnvironment:
         self.context.preamble.write(self.context.preamble.getvalue())
         self.context.f.write('\\begin{minipage}[%s]{%s}\n' % (align, width))
         self.context.f.write(env.context.f.getvalue())
-        self.context.f.write('\\end{minipage}\n')
+        self.context.f.write('\\end{minipage}%\n')
 
     @contextmanager
     def fbox(self):
+        # TODO: add params
         env = LatexEnvironment(self.context.child())
         yield env
         self.context.preamble.write(self.context.preamble.getvalue())
         self.context.f.write('\\fbox{%\n')
         self.context.f.write(env.context.f.getvalue())
         self.context.f.write('}%\n')
+
+    #@contextmanager
+    #def tightbox(self):
+        # TODO: add params
+
+    def lstlisting(self, code, language=None):
+#        \begin{lstlisting}
+#        put your code here
+#        \end{lstlisting}
+        params = ""
+        if language is not None:
+            params += 'language=%s' % language
+
+        self.use_package('listings')
+        self.context.f.write('\\begin{lstlisting}[%s]%%\n' % params)
+        self.context.f.write(code)
+        self.context.f.write('\\end{lstlisting}%\n')

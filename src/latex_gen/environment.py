@@ -59,7 +59,7 @@ class LatexEnvironment:
             hline()
 
         for i, row in enumerate(row_desc):
-            row_tex = (['\\makebox[5cm][r]{%s}' % row] +
+            row_tex = (['\\makebox[5cm][r]{%s}' % row] + 
                         ['\\makebox[1cm]{%s}' % x for x in data[i]])
             write_row_tex(row_tex)
             hline()
@@ -95,6 +95,19 @@ class LatexEnvironment:
         # XXX: add yield
         return self.tabular(alignment, env='longtable')
 
+    def textattachfile(self, basename, data, text):
+    #%\textattachfile{myfile.cc}{extract my source code}
+        filename = os.path.join(self.context.graphics_path, basename)
+        dirname = os.path.dirname(filename)
+        if not os.path.exists(dirname):
+            os.makedirs(dirname)
+
+        with open(filename, 'w') as f:
+            f.write(data)
+            
+        self.context.f.write('\\textattachfile{%s}{%s}%%\n' % 
+                              (filename, text))
+        
     def graphics_data(self, data, mime, width="3cm", gid=None):
         # TODO: allow free width
         # TODO: require graphicx
@@ -102,8 +115,8 @@ class LatexEnvironment:
         if gid is None:
             gid = self.context.generate_file_id()
         # cannot have '.' in the filename, otherwise latex gets confused
-        gid = id.replace('.', '_')
-        gid = id.replace('/', ':')
+        gid = gid.replace('.', '_')
+        gid = gid.replace('/', ':')
 
         filename = os.path.join(self.context.graphics_path, gid + suffix)
         # make sure dir exists
@@ -113,7 +126,7 @@ class LatexEnvironment:
 
         with open(filename, 'w') as f:
             f.write(data)
-        self.context.f.write('\\includegraphics[width=%s]{%s}%%\n' %
+        self.context.f.write('\\includegraphics[width=%s]{%s}%%\n' % 
                               (width, gid))
 
     @contextmanager
@@ -126,15 +139,23 @@ class LatexEnvironment:
         self.context.f.write('\\end{minipage}%\n')
 
     @contextmanager
-    def fbox(self):
+    def fbox(self, sep='1pt'):
         # TODO: add params
         env = LatexEnvironment(self.context.child())
         yield env
         self.context.preamble.write(self.context.preamble.getvalue())
+        self.context.f.write('{\\setlength\\fboxsep{%s}%%\n' % sep)
         self.context.f.write('\\fbox{%\n')
         self.context.f.write(env.context.f.getvalue())
         self.context.f.write('}%\n')
+        self.context.f.write('}%\n')
 
+    @contextmanager
+    def tightbox(self):
+        """ Fbox with no margin """
+        with self.fbox('0pt') as x:
+            yield x
+                          
     #@contextmanager
     #def tightbox(self):
         # TODO: add params

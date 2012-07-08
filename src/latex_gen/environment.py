@@ -25,11 +25,14 @@ class LatexEnvironment:
     def parbreak(self):
         self.context.f.write('\n\n')
 
+    def linebreak(self):
+        self.context.f.write('\\\\')
+
     def pagebreak(self):
         self.context.f.write('\\pagebreak\ \n')
 
     def rule(self, width, height, color='gray'):
-        self.context.f.write('{\\color{%s}\\rule{%s}{%s}}\n' % \
+        self.context.f.write('{\\color{%s}\\rule{%s}{%s}}%%\n' % \
                              (color, width, height))
 
     def text(self, t):
@@ -108,7 +111,7 @@ class LatexEnvironment:
         self.context.f.write('\\textattachfile{%s}{%s}%%\n' % 
                               (filename, text))
         
-    def graphics_data(self, data, mime, width="3cm", gid=None):
+    def graphics_data(self, data, mime, width=None, gid=None):
         # TODO: allow free width
         # TODO: require graphicx
         suffix = mimetypes.guess_extension(mime)
@@ -126,15 +129,19 @@ class LatexEnvironment:
 
         with open(filename, 'w') as f:
             f.write(data)
-        self.context.f.write('\\includegraphics[width=%s]{%s}%%\n' % 
-                              (width, gid))
+        # TODO : add crop
+        params = ""
+        if width is not None:
+            params += 'width=%s' % width
+        self.context.f.write('\\includegraphics[%s]{%s}%%\n' % 
+                              (params, gid))
 
     @contextmanager
     def minipage(self, width, align=''):
         env = LatexEnvironment(self.context.child())
         yield env
         self.context.preamble.write(self.context.preamble.getvalue())
-        self.context.f.write('\\begin{minipage}[%s]{%s}\n' % (align, width))
+        self.context.f.write('\\begin{minipage}[%s]{%s}%%\n' % (align, width))
         self.context.f.write(env.context.f.getvalue())
         self.context.f.write('\\end{minipage}%\n')
 
@@ -155,15 +162,8 @@ class LatexEnvironment:
         """ Fbox with no margin """
         with self.fbox('0pt') as x:
             yield x
-                          
-    #@contextmanager
-    #def tightbox(self):
-        # TODO: add params
-
+ 
     def lstlisting(self, code, language=None):
-#        \begin{lstlisting}
-#        put your code here
-#        \end{lstlisting}
         params = ""
         if language is not None:
             params += 'language=%s' % language

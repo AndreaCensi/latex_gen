@@ -2,6 +2,8 @@ from .utils import latex_escape
 from contextlib import contextmanager
 import mimetypes
 import os
+from reprep.constants import MIME_JPG, MIME_PLAIN
+import sys
 
 
 class LatexEnvironment:
@@ -110,25 +112,36 @@ class LatexEnvironment:
             
         self.context.f.write('\\textattachfile{%s}{%s}%%\n' % 
                               (filename, text))
+    
+    def save_graphics_data(self, data, mime, gid):
+        suffix = mimetypes.guess_extension(mime)
+        if mime == MIME_JPG:
+            suffix = '.jpg'
+        if mime == MIME_PLAIN:
+            suffix = '.txt'
         
-    def graphics_data(self, data, mime, width=None, gid=None):
+        filename = os.path.join(self.context.graphics_path,
+                                '%s%s' % (gid, suffix))
+        # make sure dir exists
+        dirname = os.path.dirname(filename)
+        if not os.path.exists(dirname):
+            os.makedirs(dirname)
+
+        #sys.stderr.write('writing to %r' % filename)
+        with open(filename, 'w') as f:
+            f.write(data)
+
+    def graphics_data(self, data, mime, width=None, gid=None):    
         # TODO: allow free width
         # TODO: require graphicx
-        suffix = mimetypes.guess_extension(mime)
         if gid is None:
             gid = self.context.generate_file_id()
         # cannot have '.' in the filename, otherwise latex gets confused
         gid = gid.replace('.', '_')
         gid = gid.replace('/', ':')
 
-        filename = os.path.join(self.context.graphics_path, gid + suffix)
-        # make sure dir exists
-        dirname = os.path.dirname(filename)
-        if not os.path.exists(dirname):
-            os.makedirs(dirname)
-
-        with open(filename, 'w') as f:
-            f.write(data)
+        self.save_graphics_data(data, mime, gid)
+        
         # TODO : add crop
         params = ""
         if width is not None:

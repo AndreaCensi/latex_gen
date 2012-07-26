@@ -2,8 +2,9 @@ from .utils import latex_escape
 from contextlib import contextmanager
 import mimetypes
 import os
-from reprep.constants import MIME_JPG, MIME_PLAIN
-import sys
+MIME_PNG = 'image/png'
+MIME_JPG = 'image/jpeg'
+MIME_PLAIN = 'text/plain'
 
 
 class LatexEnvironment:

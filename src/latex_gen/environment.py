@@ -160,6 +160,16 @@ class LatexEnvironment:
         self.context.f.write('\\end{minipage}%\n')
 
     @contextmanager
+    def minipage_bottom(self, width):
+        """ A minipage which will align the bottom with the current
+            baseline. 
+        """
+        with self.minipage(width, 'b') as m:
+            m.tex('\\vspace{0pt}\\par%\n')
+            yield m
+            m.tex('\\par\\vspace{0pt}%\n')
+
+    @contextmanager
     def fbox(self, sep='1pt'):
         # TODO: add params
         env = LatexEnvironment(self.context.child())

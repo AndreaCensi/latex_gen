@@ -52,9 +52,12 @@ class LatexContext:
             package.dump_preamble(f)
 
     def require_package(self, name):
-        if not name in self.packages:
+        if self.parent is not None:
             self.parent.use_package(name)
-
+        else:  # not sure of this
+            if not name in self.packages:
+                self.packages[name] = UsePackage(name)
+                
     def use_package(self, name, options={}):
         if self.parent is not None:
             self.parent.use_package(name, options)

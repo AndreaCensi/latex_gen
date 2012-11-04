@@ -1,5 +1,4 @@
 from . import LatexEnvironment, begin_end
-from contextlib import contextmanager
 
 
 class Figure(LatexEnvironment):
@@ -14,12 +13,6 @@ class Figure(LatexEnvironment):
     def figure(self, *args, **kwargs):
         raise StructureError('Cannot nest figures; use sub().')
 
-    @contextmanager
-    def subfigure(self, caption="", label=None):
-        subfigure = SubFigure(caption=caption, label=label,
-                           context=self.context.child())
-        yield subfigure
-        subfigure.dump(main_context=self.context)
 
     def dump(self, main_context):
         # writes everything, and caption delayed

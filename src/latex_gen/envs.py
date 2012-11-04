@@ -1,20 +1,10 @@
 from .utils import latex_escape
-#
-#@contextmanager
-#def fbox_context(x):
-#    yield 
-#    
-#def fbox(x):
-#    if isinstance(x, str):
-#        return '\\fbox{%s}' % x
-#    else:
-#        assert hasattr(x, '__exit__')
-#        return fbox_context(x)
 
 
 def env(name, content, param=None):
     s = '\\begin{%s}' % name
-    if param: s += ('{%s}' % param)
+    if param:
+        s += ('{%s}' % param)
 #    s += '%%\n%s%%\n' % content
     s += content
     s += ('\\end{%s}' % name)
@@ -46,7 +36,7 @@ def verbatim_soft(content):
 
 
 def color_rgb(x, col):
-    return protect('\\color[rgb]{%s,%s,%s}%s' %
+    return protect('\\color[rgb]{%s,%s,%s}%s' % 
                 (col[0], col[1], col[2], x))
 
 def fbox(x):

@@ -2,6 +2,8 @@ from .utils import latex_escape
 from contextlib import contextmanager
 import mimetypes
 import os
+from contracts import contract
+
 MIME_PNG = 'image/png'
 MIME_JPG = 'image/jpeg'
 MIME_PLAIN = 'text/plain'
@@ -35,7 +37,7 @@ class LatexEnvironment:
         self.context.f.write('\\pagebreak\ \n')
 
     def rule(self, width, height, color='gray'):
-        self.context.f.write('{\\color{%s}\\rule{%s}{%s}}%%\n' % \
+        self.context.f.write('{\\color{%s}\\rule{%s}{%s}}%%\n' % 
                              (color, width, height))
 
     def text(self, t):
@@ -76,7 +78,7 @@ class LatexEnvironment:
         ''' Writes raw TeX string. '''
         self.context.f.write(tex)
 
-    def input(self, filename): #@ReservedAssignment
+    def input(self, filename):  # @ReservedAssignment
         self.context.f.write('\\input{%s}\n' % filename)
 
     def use_package(self, name, options={}):
@@ -102,7 +104,7 @@ class LatexEnvironment:
         return self.tabular(alignment, env='longtable')
 
     def textattachfile(self, basename, data, text):
-    #%\textattachfile{myfile.cc}{extract my source code}
+    # %\textattachfile{myfile.cc}{extract my source code}
         filename = os.path.join(self.context.graphics_path, basename)
         dirname = os.path.dirname(filename)
         if not os.path.exists(dirname):
@@ -128,11 +130,12 @@ class LatexEnvironment:
         if not os.path.exists(dirname):
             os.makedirs(dirname)
 
-        #sys.stderr.write('writing to %r' % filename)
+        # sys.stderr.write('writing to %r' % filename)
         with open(filename, 'w') as f:
             f.write(data)
 
-    def graphics_data(self, data, mime, width=None, gid=None):    
+    @contract(params='dict|None')
+    def graphics_data(self, data, mime, gid=None, **params):    
         # TODO: allow free width
         # TODO: require graphicx
         if gid is None:
@@ -144,11 +147,17 @@ class LatexEnvironment:
         self.save_graphics_data(data, mime, gid)
         
         # TODO : add crop
-        params = ""
-        if width is not None:
-            params += 'width=%s' % width
+#        if params is None:
+#            params = {}
+#        if width is not None:
+#            params['width'] = width
+
+        ps = make_options_string(**params)
+            
         self.context.f.write('\\includegraphics[%s]{%s}%%\n' % 
-                              (params, gid))
+                              (ps, gid))
+
+
 
     @contextmanager
     def minipage(self, width, align=''):
@@ -158,6 +167,7 @@ class LatexEnvironment:
         self.context.f.write('\\begin{minipage}[%s]{%s}%%\n' % (align, width))
         self.context.f.write(env.context.f.getvalue())
         self.context.f.write('\\end{minipage}%\n')
+
 
     @contextmanager
     def minipage_bottom(self, width):
@@ -181,6 +191,22 @@ class LatexEnvironment:
         self.context.f.write('}%\n')
         self.context.f.write('}%\n')
 
+    def medskip(self):
+        self.context.f.write('\\medskip%%\n')
+
+    def footnotesize(self):
+        self.context.f.write('\\footnotesize%%\n')
+
+    @contextmanager
+    def mbox(self, width='', position='c'):  # XXX: FIXME
+        """ Position: c, l, r. """
+        env = LatexEnvironment(self.context.child())
+        yield env
+        self.context.preamble.write(self.context.preamble.getvalue())
+        self.context.f.write('\\mbox[%s][%s]{%%\n' % (width, position))
+        self.context.f.write(env.context.f.getvalue())
+        self.context.f.write('}%\n')
+        
     @contextmanager
     def tightbox(self):
         """ Fbox with no margin """
@@ -196,3 +222,23 @@ class LatexEnvironment:
         self.context.f.write('\\begin{lstlisting}[%s]%%\n' % params)
         self.context.f.write(code)
         self.context.f.write('\\end{lstlisting}%\n')
+
+    @contextmanager
+    def subfigure(self, caption="", label=None):
+        from .figure import SubFigure
+        subfigure = SubFigure(caption=caption, label=label,
+                              context=self.context.child())
+        yield subfigure
+        subfigure.dump(main_context=self.context)
+
+
+def make_options_string(**params):
+    ss = []
+    for k,v in params.items():
+        if v is None:
+            continue
+        if isinstance(v, bool) and v == True:
+            ss.append(k)
+        else:
+            ss.append('%s=%s' % (k, v))
+    return ",".join(ss)  

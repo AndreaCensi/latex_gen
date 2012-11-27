@@ -9,12 +9,16 @@ class TestTables(LatexTestUtils):
         ''' Completely yield-oriented '''
         with doc.tabular(['c', 'c']) as tabular:
             with tabular.row() as row:                        
-                with row.cell() as c:  c.tex('a')
-                with row.cell() as c:  c.tex('b')                
+                with row.cell() as c:  
+                    c.tex('a')
+                with row.cell() as c:  
+                    c.tex('b')                
             tabular.hline()
             with tabular.row() as row:                        
-                with row.cell() as c:  c.tex('a')
-                with row.cell() as c:  c.tex('b')
+                with row.cell() as c:  
+                    c.tex('a')
+                with row.cell() as c:  
+                    c.tex('b')
 
     @doc_idiom
     def test_table2(doc): #@NoSelf

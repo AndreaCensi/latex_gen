@@ -21,7 +21,7 @@ def latex_gen_demo_failure(f):
     return f
 
 
-def run_demo(demo, dirname):
+def run_demo(demo, dirname):  # @ReservedAssignment
     name = demo.__name__
     print('Running %s' % name)
     doc = LatexDocument()
@@ -43,13 +43,13 @@ def all_demos(argv):
 
     if len(argv) == 1:
         only = argv[0]
-        for demo in DemoStorage.demo_list:
-            if demo.__name__ == only:
-                run_demo(demo, dirname)
+        for d in DemoStorage.demo_list:
+            if d.__name__ == only:
+                run_demo(d, dirname)
 
     else:
-        for demo in DemoStorage.demo_list:
-            run_demo(demo, dirname)
+        for d in DemoStorage.demo_list:
+            run_demo(d, dirname)
 
 
 def main():

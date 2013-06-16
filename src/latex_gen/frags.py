@@ -13,8 +13,8 @@ def latex_document(filename_or_stream,
         if graphics_path is None:
             graphics_path = os.path.dirname(filename_or_stream)
         make_sure_dir_exists(graphics_path)
-        graphics_path = os.path.relpath(graphics_path,
-                                        os.path.dirname(filename_or_stream))
+#         graphics_path = os.path.relpath(graphics_path,
+#                                         os.path.dirname(filename_or_stream))
     else:
         if graphics_path is None:
             graphics_path = os.getcwd()
@@ -34,22 +34,22 @@ def latex_document(filename_or_stream,
 @contextmanager
 def latex_fragment(filename_or_stream, graphics_path=None):
     is_filename = isinstance(filename_or_stream, str)
+
     if is_filename:
         if graphics_path is None:
             graphics_path = os.path.dirname(filename_or_stream)
         make_sure_dir_exists(graphics_path)
-        graphics_path = os.path.relpath(graphics_path,
-                                        os.path.dirname(filename_or_stream))
+#         graphics_path = os.path.relpath(graphics_path,
+#                                         os.path.dirname(filename_or_stream))
     else:
         if graphics_path is None:
             graphics_path = os.getcwd()
 
-    ###        
     context = LatexContext(graphics_path=graphics_path)
     environment = LatexEnvironment(context)
 
     yield environment
-    ###        
+    # ##        
     if is_filename:
         with open(filename_or_stream, 'w') as f:
             f.write(context.f.getvalue())

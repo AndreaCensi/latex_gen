@@ -1,6 +1,10 @@
-from . import LatexContext, LatexEnvironment
 import os
 from .file_utils import make_sure_dir_exists
+from .environment import LatexEnvironment
+from .context import LatexContext
+
+
+__all__ = ['LatexDocument']
 
 
 class LatexDocument(LatexEnvironment):
@@ -15,7 +19,7 @@ class LatexDocument(LatexEnvironment):
                                                   self.document_class))
 
         self.context.dump_preamble(f)
-        f.write('\\usepackage{xcolor}\n')
+        # f.write('% \\usepackage{xcolor}\n')
         # TODO: check bad chars in graphics_path
         f.write('\\usepackage{graphicx}\n')
         f.write('\\graphicspath{{%s/}}\n' % self.context.graphics_path)

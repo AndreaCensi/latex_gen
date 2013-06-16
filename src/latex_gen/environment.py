@@ -9,7 +9,7 @@ MIME_JPG = 'image/jpeg'
 MIME_PLAIN = 'text/plain'
 
 
-class LatexEnvironment:
+class LatexEnvironment(object):
 
     def __init__(self, context):
         self.context = context
@@ -20,6 +20,9 @@ class LatexEnvironment:
 
     def hfill(self):
         self.context.f.write('\\hfill\ \n')
+    
+    def vfill(self):
+        self.context.f.write('\\vfill\ \n')
 
     def hspace(self, size):
         self.context.f.write('\\hspace{%s}' % size)
@@ -28,7 +31,8 @@ class LatexEnvironment:
         self.context.f.write('\\vspace{%s}' % size)
 
     def parbreak(self):
-        self.context.f.write('\n\n')
+        self.context.f.write('\par%\n')
+        # self.context.f.write('\n\n')
 
     def linebreak(self):
         self.context.f.write('\\\\')
@@ -133,6 +137,8 @@ class LatexEnvironment:
         # sys.stderr.write('writing to %r' % filename)
         with open(filename, 'w') as f:
             f.write(data)
+            
+        return filename
 
     @contract(params='dict|None')
     def graphics_data(self, data, mime, gid=None, **params):    
@@ -160,12 +166,31 @@ class LatexEnvironment:
 
 
     @contextmanager
-    def minipage(self, width, align=''):
+    def minipage(self, width, align='', fbox=False):
+        fix_alignment = False
+        if fbox:
+            with self.tightbox() as fb:
+                # fb.hspace('-1pt')
+#                 fb.tex('\\newlength{\\%s}' % x)
+#                 fb.tex('\\setlength{\\%s}{%s plus 2pt}' % (x, width))
+                with fb.minipage(width, align, fbox=False) as m:
+                    yield m
+                # fb.hspace('-1pt')
+            return
+                    
         env = LatexEnvironment(self.context.child())
         yield env
         self.context.preamble.write(self.context.preamble.getvalue())
         self.context.f.write('\\begin{minipage}[%s]{%s}%%\n' % (align, width))
+        
+        if fix_alignment:
+            self.context.f.write('\\vspace{0pt}\\par%\n')
+        
         self.context.f.write(env.context.f.getvalue())
+        
+        if fix_alignment:
+            self.context.f.write('\\par\\vspace{0pt}%\n')
+        
         self.context.f.write('\\end{minipage}%\n')
 
 
@@ -188,8 +213,17 @@ class LatexEnvironment:
         self.context.f.write('{\\setlength\\fboxsep{%s}%%\n' % sep)
         self.context.f.write('\\fbox{%\n')
         self.context.f.write(env.context.f.getvalue())
-        self.context.f.write('}%\n')
-        self.context.f.write('}%\n')
+        self.context.f.write('}% fbox\n')
+        self.context.f.write('}% setlength\n')
+
+    @contextmanager
+    def resizebox(self, width):
+        env = LatexEnvironment(self.context.child())
+        yield env
+        self.context.preamble.write(self.context.preamble.getvalue())
+        self.context.f.write('\\resizebox{%s}{!}{%%\n' % width)
+        self.context.f.write(env.context.f.getvalue())
+        self.context.f.write('}%resizebox\n')
 
     def medskip(self):
         self.context.f.write('\\medskip%%\n')

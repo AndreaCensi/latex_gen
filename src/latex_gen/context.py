@@ -2,7 +2,7 @@ from StringIO import StringIO
 from contracts import contract
 
 
-class UsePackage:
+class UsePackage(object):
 
     @contract(name='str', options='dict(str:str)')
     def __init__(self, name, options={}):
@@ -24,8 +24,9 @@ def dict_to_latex_option_string(d):
     return s
 
 
-class LatexContext:
+class LatexContext(object):
     def __init__(self, graphics_path="."):
+        print('context %s ' % graphics_path)
         self.f = StringIO()
         self.preamble = StringIO()
         self.graphics_path = graphics_path

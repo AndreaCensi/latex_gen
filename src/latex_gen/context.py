@@ -2,6 +2,9 @@ from StringIO import StringIO
 from contracts import contract
 
 
+__all__ = ['LatexContext']
+
+
 class UsePackage(object):
 
     @contract(name='str', options='dict(str:str)')
@@ -26,7 +29,6 @@ def dict_to_latex_option_string(d):
 
 class LatexContext(object):
     def __init__(self, graphics_path="."):
-        print('context %s ' % graphics_path)
         self.f = StringIO()
         self.preamble = StringIO()
         self.graphics_path = graphics_path

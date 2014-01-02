@@ -2,6 +2,9 @@ from StringIO import StringIO
 from contracts import contract
 
 
+__all__ = ['LatexContext']
+
+
 class UsePackage(object):
 
     @contract(name='str', options='dict(str:str)')

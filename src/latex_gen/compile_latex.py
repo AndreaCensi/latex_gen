@@ -1,7 +1,8 @@
-from . import BadTex
 import os
 import subprocess
+from .structures import BadTex
 
+__all__ = ['compile_tex']
 
 def compile_tex(filename, cwd=None):
     ''' Raises BadTex if the file is not compilable. '''

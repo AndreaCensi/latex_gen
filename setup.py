@@ -11,7 +11,7 @@ setup(name='LaTeXGen',
             'latex_gen_demos = latex_gen.tests.demos:main',
          ]
         },
-        install_requires=[],
+        install_requires=['PyContracts'],
         extras_require={},
 )
 

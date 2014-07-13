@@ -90,6 +90,7 @@ class LatexEnvironment(object):
 
     @contextmanager
     def figure(self, caption=None, label=None, placement="t", double=False):
+        self.use_package('caption')
         from .figure import Figure
         figure = Figure(caption=caption, label=label, placement=placement,
                         context=self.context.child(), double=double)
@@ -260,6 +261,8 @@ class LatexEnvironment(object):
     @contextmanager
     def subfigure(self, caption="", label=None):
         from .figure import SubFigure
+        self.use_package('caption')
+        self.use_package('subfig')
         subfigure = SubFigure(caption=caption, label=label,
                               context=self.context.child())
         yield subfigure

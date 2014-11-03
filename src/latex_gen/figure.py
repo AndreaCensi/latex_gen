@@ -1,18 +1,18 @@
-from . import LatexEnvironment, begin_end
+from .environment import LatexEnvironment
+from .utils import begin_end
 
 
 class Figure(LatexEnvironment):
 
     def __init__(self, caption, label, placement, context, double):
+        LatexEnvironment.__init__(self, context)
         self.caption = caption
         self.label = label
-        self.context = context
         self.placement = placement
         self.double = double
 
     def figure(self, *args, **kwargs):
         raise StructureError('Cannot nest figures; use sub().')
-
 
     def dump(self, main_context):
         # writes everything, and caption delayed

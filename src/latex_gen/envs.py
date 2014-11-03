@@ -54,4 +54,3 @@ def fbox(x):
 
 def hspace(x):
     return '\\hspace{%s}' % x
-

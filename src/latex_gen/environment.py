@@ -271,7 +271,7 @@ class LatexEnvironment(object):
 
 def make_options_string(**params):
     ss = []
-    for k, v in params.items():
+    for k, v in list(params.items()):
         if v is None:
             continue
         if isinstance(v, bool) and v == True:

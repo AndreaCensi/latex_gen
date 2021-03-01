@@ -57,7 +57,7 @@ class LatexTestUtils(unittest.TestCase):
 
     def get_error_file(self):
         pattern = 'error_doc_%03d.tex'
-        for i in xrange(1000):
+        for i in range(1000):
             candidate = pattern % i
             if not os.path.exists(candidate):
                 return candidate
@@ -68,7 +68,7 @@ class LatexTestUtils(unittest.TestCase):
 
     def tearDown(self):
         # # TODO: cleanup, remove dir
-        print('Deleting %r..' % (self.test_directory))
+        print(('Deleting %r..' % (self.test_directory)))
         pass
 
     @contextmanager

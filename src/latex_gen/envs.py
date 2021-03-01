@@ -25,6 +25,9 @@ def protect(content):
 def small(content):
     return protect(enclose('small', content))
 
+def footnotesize(content):
+    return protect(enclose('footnotesize', content))
+
 def texttt(content):
     return enclose('texttt', content)
 
@@ -36,7 +39,7 @@ def verbatim_soft(content):
 
 
 def color_rgb(x, col):
-    return protect('\\color[rgb]{%s,%s,%s}%s' % 
+    return protect('\\color[rgb]{%s,%s,%s}%s' %
                 (col[0], col[1], col[2], x))
 
 def fbox(x):

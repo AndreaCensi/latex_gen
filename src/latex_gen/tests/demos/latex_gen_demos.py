@@ -23,7 +23,7 @@ def latex_gen_demo_failure(f):
 
 def run_demo(demo, dirname):  # @ReservedAssignment
     name = demo.__name__
-    print('Running %s' % name)
+    print(('Running %s' % name))
     doc = LatexDocument()
     doc.fullpage()
 

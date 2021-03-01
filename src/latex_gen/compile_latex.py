@@ -31,6 +31,6 @@ def run_pdflatex(basename, cwd):
 def clean_temporary_files(basename):
     for suff in ['aux', 'log']:
         f = basename + '.' + suff
-        print f
+        print(f)
         if os.path.exists(f):
             os.unlink(f)

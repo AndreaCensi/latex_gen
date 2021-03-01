@@ -1,4 +1,4 @@
-from StringIO import StringIO
+from io import StringIO
 from contracts import contract
 
 
@@ -51,7 +51,7 @@ class LatexContext(object):
         return c
 
     def dump_preamble(self, f):
-        for package in self.packages.values():
+        for package in list(self.packages.values()):
             package.dump_preamble(f)
 
     def require_package(self, name):

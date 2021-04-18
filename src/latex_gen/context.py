@@ -2,28 +2,27 @@ from io import StringIO
 from contracts import contract
 
 
-__all__ = ['LatexContext']
+__all__ = ["LatexContext"]
 
 
 class UsePackage(object):
-
-    @contract(name='str', options='dict(str:str)')
+    @contract(name="str", options="dict(str:str)")
     def __init__(self, name, options={}):
         self.name = name
         self.options = options
 
     def dump_preamble(self, f):
         options = dict_to_latex_option_string(self.options)
-        f.write('\\usepackage[%s]{%s}\n' % (options, self.name))
+        f.write("\\usepackage[%s]{%s}\n" % (options, self.name))
 
 
 def dict_to_latex_option_string(d):
     s = ""
     for k, v in d:
         if v is None:
-            s += ',' + k
+            s += "," + k
         else:
-            s += k + '=' + v
+            s += k + "=" + v
     return s
 
 
@@ -45,7 +44,7 @@ class LatexContext(object):
         return f
 
     def child(self):
-        ''' Generates a child context; sharing some data '''
+        """ Generates a child context; sharing some data """
         c = LatexContext(self.graphics_path)
         c.parent = self
         return c
@@ -60,10 +59,9 @@ class LatexContext(object):
         else:  # not sure of this
             if not name in self.packages:
                 self.packages[name] = UsePackage(name)
-                
+
     def use_package(self, name, options={}):
         if self.parent is not None:
             self.parent.use_package(name, options)
         else:
             self.packages[name] = UsePackage(name, options)
-

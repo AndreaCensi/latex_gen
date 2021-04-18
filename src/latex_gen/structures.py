@@ -1,5 +1,2 @@
-
-
 class BadTex(Exception):
     pass
-

@@ -3,13 +3,11 @@ from contextlib import contextmanager
 
 def latex_escape(s):
     # Do this at the beginning
-    s = s.replace('\\', '\\textbackslash ')
-    s = s.replace('{', '\\{')
-    s = s.replace('}', '\\}')
-    s = s.replace('^', '\\^')
-    replace = {'_': '\\_', #'\\_', 
-               '$': '\\$'
-               }
+    s = s.replace("\\", "\\textbackslash ")
+    s = s.replace("{", "\\{")
+    s = s.replace("}", "\\}")
+    s = s.replace("^", "\\^")
+    replace = {"_": "\\_", "$": "\\$"}  #'\\_',
     for k in replace:
         s = s.replace(k, replace[k])
     return s
@@ -17,10 +15,10 @@ def latex_escape(s):
 
 @contextmanager
 def begin_end(stream, env_name, options={}):
-    stream.write('\\begin{%s}' % env_name)
+    stream.write("\\begin{%s}" % env_name)
     if options:
-        stream.write('[%s]' % (options))
-    stream.write('%\n')
+        stream.write("[%s]" % (options))
+    stream.write("%\n")
 
     yield stream
-    stream.write('\\end{%s}%%\n' % env_name)
+    stream.write("\\end{%s}%%\n" % env_name)

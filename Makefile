@@ -43,7 +43,7 @@ install-testing-deps:
 
 	pip install 		pipdeptree==0.13.2		bumpversion		nose==1.3.7		nose2==0.9.2		nose2-html-report==0.6.0		nose-parallel==0.3.1		nose_xunitmp==0.4.1		pre-commit==2.1.1		rednose==1.3.0		coverage==5.0.3		codecov==2.0.16		sphinx		sphinx-rtd-theme
 
-cover_packages=latex_gen.tests.demos,latex_gen,latex_gen.tests
+cover_packages=latex_gen.tests.demos,latex_gen.tests,latex_gen
 
 # PROJECT_ROOT ?= /project
 # REGISTRY ?= docker.io
@@ -89,4 +89,4 @@ coverage-combine:
 docs:
 	sphinx-build src $(out)/docs
         
-# sigil 58b72386ebf12272caf46f3c067eb0ac
+# sigil 76f0d7931f3ceed6b8f3472ef95926fe

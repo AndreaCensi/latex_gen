@@ -2,8 +2,7 @@ jobs:
   test-3.8-production:
     docker:
     - {image: python:3.8}
-    environment: {COLUMNS: '160', COVER_PACKAGES: 'latex_gen.tests,latex_gen.tests.utils,latex_gen.tabular,latex_gen.ifs,latex_gen.tests.demos.latex_gen_demos,latex_gen,latex_gen.tests.test_escaping,latex_gen.file_utils,latex_gen.structures,latex_gen.tests.demos.tables,latex_gen.compile_latex,latex_gen.utils,latex_gen.tests.test_idions,latex_gen.figure,latex_gen.tests.demos,latex_gen.context,latex_gen.tests.test_tables,latex_gen.frags,latex_gen.document,latex_gen.tests.demos.demo1,latex_gen.environment,latex_gen.envs,latex_gen.tests.demos.escaping',
-      PATH: /root/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin,
+    environment: {COLUMNS: '160', COVER_PACKAGES: latex_gen, PATH: /root/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin,
       TEST_PACKAGES: ''}
     steps:
     - checkout
@@ -45,8 +44,7 @@ jobs:
   test-3.8-staging:
     docker:
     - {image: python:3.8}
-    environment: {COLUMNS: '160', COVER_PACKAGES: 'latex_gen.tests,latex_gen.tests.utils,latex_gen.tabular,latex_gen.ifs,latex_gen.tests.demos.latex_gen_demos,latex_gen,latex_gen.tests.test_escaping,latex_gen.file_utils,latex_gen.structures,latex_gen.tests.demos.tables,latex_gen.compile_latex,latex_gen.utils,latex_gen.tests.test_idions,latex_gen.figure,latex_gen.tests.demos,latex_gen.context,latex_gen.tests.test_tables,latex_gen.frags,latex_gen.document,latex_gen.tests.demos.demo1,latex_gen.environment,latex_gen.envs,latex_gen.tests.demos.escaping',
-      PATH: /root/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin,
+    environment: {COLUMNS: '160', COVER_PACKAGES: latex_gen, PATH: /root/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin,
       TEST_PACKAGES: ''}
     steps:
     - checkout
@@ -99,4 +97,4 @@ workflows:
           branches: {ignore: /z7-stage.*/}
   version: 2
 
-# sigil ff61702843c6b882b2cd82b4f185bbe6
+# sigil ba9f9d27c7cf140eb199ef29b21eda72

@@ -2,7 +2,7 @@ jobs:
   test-3.8-production:
     docker:
     - {image: python:3.8}
-    environment: {COLUMNS: '160', COVER_PACKAGES: 'latex_gen.figure,latex_gen.tests.demos.tables,latex_gen.tests.test_tables,latex_gen.tests,latex_gen.tests.utils,latex_gen.tests.demos.escaping,latex_gen.environment,latex_gen.tests.demos.demo1,latex_gen.tests.test_idions,latex_gen.frags,latex_gen.structures,latex_gen,latex_gen.document,latex_gen.file_utils,latex_gen.tests.test_escaping,latex_gen.envs,latex_gen.tests.demos.latex_gen_demos,latex_gen.ifs,latex_gen.tests.demos,latex_gen.tabular,latex_gen.utils,latex_gen.compile_latex,latex_gen.context',
+    environment: {COLUMNS: '160', COVER_PACKAGES: 'latex_gen,latex_gen.tabular,latex_gen.tests.test_escaping,latex_gen.file_utils,latex_gen.tests.demos.demo1,latex_gen.envs,latex_gen.tests,latex_gen.tests.demos.escaping,latex_gen.tests.demos.latex_gen_demos,latex_gen.compile_latex,latex_gen.utils,latex_gen.structures,latex_gen.document,latex_gen.tests.utils,latex_gen.tests.test_tables,latex_gen.tests.demos,latex_gen.environment,latex_gen.ifs,latex_gen.tests.test_idions,latex_gen.context,latex_gen.frags,latex_gen.tests.demos.tables,latex_gen.figure',
       PATH: /root/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin,
       TEST_PACKAGES: ''}
     steps:
@@ -45,7 +45,7 @@ jobs:
   test-3.8-staging:
     docker:
     - {image: python:3.8}
-    environment: {COLUMNS: '160', COVER_PACKAGES: 'latex_gen.figure,latex_gen.tests.demos.tables,latex_gen.tests.test_tables,latex_gen.tests,latex_gen.tests.utils,latex_gen.tests.demos.escaping,latex_gen.environment,latex_gen.tests.demos.demo1,latex_gen.tests.test_idions,latex_gen.frags,latex_gen.structures,latex_gen,latex_gen.document,latex_gen.file_utils,latex_gen.tests.test_escaping,latex_gen.envs,latex_gen.tests.demos.latex_gen_demos,latex_gen.ifs,latex_gen.tests.demos,latex_gen.tabular,latex_gen.utils,latex_gen.compile_latex,latex_gen.context',
+    environment: {COLUMNS: '160', COVER_PACKAGES: 'latex_gen,latex_gen.tabular,latex_gen.tests.test_escaping,latex_gen.file_utils,latex_gen.tests.demos.demo1,latex_gen.envs,latex_gen.tests,latex_gen.tests.demos.escaping,latex_gen.tests.demos.latex_gen_demos,latex_gen.compile_latex,latex_gen.utils,latex_gen.structures,latex_gen.document,latex_gen.tests.utils,latex_gen.tests.test_tables,latex_gen.tests.demos,latex_gen.environment,latex_gen.ifs,latex_gen.tests.test_idions,latex_gen.context,latex_gen.frags,latex_gen.tests.demos.tables,latex_gen.figure',
       PATH: /root/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin,
       TEST_PACKAGES: ''}
     steps:
@@ -99,4 +99,4 @@ workflows:
           branches: {ignore: /z7-stage.*/}
   version: 2
 
-# sigil 907dbfd5ef0bb043f567224d8f536d9f
+# sigil 93c50a9d76d056082cf7c9ce231217a0

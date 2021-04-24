@@ -11,8 +11,8 @@
       "latex_gen_demos = latex_gen.tests.demos:main"
     ]
   },
-  "zip_safe": false,
-  "include_package_data": false,
+  "zip_safe": true,
+  "include_package_data": true,
   "modules": [
     "latex_gen",
     "latex_gen.tests",
@@ -21,5 +21,6 @@
   "version": "7.1.2104231703",
   "author": "",
   "author_email": "info@zupermind.com",
-  "url": "https://github.com/zupermind/PACKAGENAME"
+  "url": "https://github.com/zupermind/PACKAGENAME",
+  "hey": 2
 }

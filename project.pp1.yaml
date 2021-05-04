@@ -1,37 +1,39 @@
-package_name: latex-gen-z7
-srcdir: src
-version_file: '1'
-modules:
+---
+package_name         : latex-gen-z7
+srcdir               : src
+version_file         : '1'
+modules              :
 - latex_gen
 
-install_requires:
+install_requires     :
 - PyContracts3
 - zuper-commons-z7
 
-install_conflicts: [PACKAGENAME-*]
-tests_require: []
+install_conflicts    : [PACKAGENAME-*]
+tests_require        : []
 
-console_scripts:
+console_scripts      :
   latex_gen_demos: latex_gen.tests.demos:main
 
 
-nose:
-  modules: []
+nose                 :
+  modules:
+  - '*tests'
   python_versions:
   - '3.7'
   - '3.8'
 
-pypi:
+pypi                 :
   upload: []
 
-circleci:
+circleci             :
   active: true
   test_python_versions: ['3.7', '3.8']
 
 python_syntax_version: '3.8'
 
-url: https://github.com/zupermind/PACKAGENAME
-author: ''
-author_email: info@zupermind.com
-short_description: ''
-full_description: ''
+url                  : https://github.com/zupermind/PACKAGENAME
+author               : ''
+author_email         : info@zupermind.com
+short_description    : ''
+full_description     : ''

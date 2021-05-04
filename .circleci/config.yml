@@ -30,7 +30,7 @@ jobs:
       # default is /usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       PATH: /root/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       COVER_PACKAGES: latex_gen,latex_gen_tests
-      TEST_PACKAGES: latex_gen_tests latex_gen
+      TEST_PACKAGES: latex_gen latex_gen_tests
     docker:
     - image: ${DOCKER_REGISTRY}/zupermind/zuper-ci-3.7:z7
       auth:
@@ -108,23 +108,10 @@ jobs:
 
 
     - run:
-        name: latex_gen_tests
-        command: |-
-          set -ex
-          mkdir -p out/test-results;
-          xunit_output=$PWD/out/test-results/nose-${CIRCLE_NODE_INDEX}-latex_gen_tests-xunit.xml
-          nosetests \
-              --rednose --immediate \
-              --cover-tests --with-coverage \
-              --with-xunit --xunit-file=${xunit_output} \
-              --cover-package=${COVER_PACKAGES} \
-              latex_gen_tests
-        when: always
-    - run:
         name: latex_gen
         command: |-
-          set -ex
-          mkdir -p out/test-results;
+          set -euxo pipefail
+          mkdir -p out/test-results
           xunit_output=$PWD/out/test-results/nose-${CIRCLE_NODE_INDEX}-latex_gen-xunit.xml
           nosetests \
               --rednose --immediate \
@@ -132,6 +119,19 @@ jobs:
               --with-xunit --xunit-file=${xunit_output} \
               --cover-package=${COVER_PACKAGES} \
               latex_gen
+        when: always
+    - run:
+        name: latex_gen_tests
+        command: |-
+          set -euxo pipefail
+          mkdir -p out/test-results
+          xunit_output=$PWD/out/test-results/nose-${CIRCLE_NODE_INDEX}-latex_gen_tests-xunit.xml
+          nosetests \
+              --rednose --immediate \
+              --cover-tests --with-coverage \
+              --with-xunit --xunit-file=${xunit_output} \
+              --cover-package=${COVER_PACKAGES} \
+              latex_gen_tests
         when: always
     - run:
         name: post-circle-tests
@@ -178,7 +178,7 @@ jobs:
       # default is /usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       PATH: /root/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       COVER_PACKAGES: latex_gen,latex_gen_tests
-      TEST_PACKAGES: latex_gen_tests latex_gen
+      TEST_PACKAGES: latex_gen latex_gen_tests
     docker:
     - image: ${DOCKER_REGISTRY}/zupermind/zuper-ci-3.7:z7
       auth:
@@ -256,23 +256,10 @@ jobs:
 
 
     - run:
-        name: latex_gen_tests
-        command: |-
-          set -ex
-          mkdir -p out/test-results;
-          xunit_output=$PWD/out/test-results/nose-${CIRCLE_NODE_INDEX}-latex_gen_tests-xunit.xml
-          nosetests \
-              --rednose --immediate \
-              --cover-tests --with-coverage \
-              --with-xunit --xunit-file=${xunit_output} \
-              --cover-package=${COVER_PACKAGES} \
-              latex_gen_tests
-        when: always
-    - run:
         name: latex_gen
         command: |-
-          set -ex
-          mkdir -p out/test-results;
+          set -euxo pipefail
+          mkdir -p out/test-results
           xunit_output=$PWD/out/test-results/nose-${CIRCLE_NODE_INDEX}-latex_gen-xunit.xml
           nosetests \
               --rednose --immediate \
@@ -280,6 +267,19 @@ jobs:
               --with-xunit --xunit-file=${xunit_output} \
               --cover-package=${COVER_PACKAGES} \
               latex_gen
+        when: always
+    - run:
+        name: latex_gen_tests
+        command: |-
+          set -euxo pipefail
+          mkdir -p out/test-results
+          xunit_output=$PWD/out/test-results/nose-${CIRCLE_NODE_INDEX}-latex_gen_tests-xunit.xml
+          nosetests \
+              --rednose --immediate \
+              --cover-tests --with-coverage \
+              --with-xunit --xunit-file=${xunit_output} \
+              --cover-package=${COVER_PACKAGES} \
+              latex_gen_tests
         when: always
     - run:
         name: post-circle-tests
@@ -326,7 +326,7 @@ jobs:
       # default is /usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       PATH: /root/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       COVER_PACKAGES: latex_gen,latex_gen_tests
-      TEST_PACKAGES: latex_gen_tests latex_gen
+      TEST_PACKAGES: latex_gen latex_gen_tests
     docker:
     - image: ${DOCKER_REGISTRY}/zupermind/zuper-ci-3.8:z7
       auth:
@@ -404,23 +404,10 @@ jobs:
 
 
     - run:
-        name: latex_gen_tests
-        command: |-
-          set -ex
-          mkdir -p out/test-results;
-          xunit_output=$PWD/out/test-results/nose-${CIRCLE_NODE_INDEX}-latex_gen_tests-xunit.xml
-          nosetests \
-              --rednose --immediate \
-              --cover-tests --with-coverage \
-              --with-xunit --xunit-file=${xunit_output} \
-              --cover-package=${COVER_PACKAGES} \
-              latex_gen_tests
-        when: always
-    - run:
         name: latex_gen
         command: |-
-          set -ex
-          mkdir -p out/test-results;
+          set -euxo pipefail
+          mkdir -p out/test-results
           xunit_output=$PWD/out/test-results/nose-${CIRCLE_NODE_INDEX}-latex_gen-xunit.xml
           nosetests \
               --rednose --immediate \
@@ -428,6 +415,19 @@ jobs:
               --with-xunit --xunit-file=${xunit_output} \
               --cover-package=${COVER_PACKAGES} \
               latex_gen
+        when: always
+    - run:
+        name: latex_gen_tests
+        command: |-
+          set -euxo pipefail
+          mkdir -p out/test-results
+          xunit_output=$PWD/out/test-results/nose-${CIRCLE_NODE_INDEX}-latex_gen_tests-xunit.xml
+          nosetests \
+              --rednose --immediate \
+              --cover-tests --with-coverage \
+              --with-xunit --xunit-file=${xunit_output} \
+              --cover-package=${COVER_PACKAGES} \
+              latex_gen_tests
         when: always
     - run:
         name: post-circle-tests
@@ -474,7 +474,7 @@ jobs:
       # default is /usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       PATH: /root/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       COVER_PACKAGES: latex_gen,latex_gen_tests
-      TEST_PACKAGES: latex_gen_tests latex_gen
+      TEST_PACKAGES: latex_gen latex_gen_tests
     docker:
     - image: ${DOCKER_REGISTRY}/zupermind/zuper-ci-3.8:z7
       auth:
@@ -552,23 +552,10 @@ jobs:
 
 
     - run:
-        name: latex_gen_tests
-        command: |-
-          set -ex
-          mkdir -p out/test-results;
-          xunit_output=$PWD/out/test-results/nose-${CIRCLE_NODE_INDEX}-latex_gen_tests-xunit.xml
-          nosetests \
-              --rednose --immediate \
-              --cover-tests --with-coverage \
-              --with-xunit --xunit-file=${xunit_output} \
-              --cover-package=${COVER_PACKAGES} \
-              latex_gen_tests
-        when: always
-    - run:
         name: latex_gen
         command: |-
-          set -ex
-          mkdir -p out/test-results;
+          set -euxo pipefail
+          mkdir -p out/test-results
           xunit_output=$PWD/out/test-results/nose-${CIRCLE_NODE_INDEX}-latex_gen-xunit.xml
           nosetests \
               --rednose --immediate \
@@ -576,6 +563,19 @@ jobs:
               --with-xunit --xunit-file=${xunit_output} \
               --cover-package=${COVER_PACKAGES} \
               latex_gen
+        when: always
+    - run:
+        name: latex_gen_tests
+        command: |-
+          set -euxo pipefail
+          mkdir -p out/test-results
+          xunit_output=$PWD/out/test-results/nose-${CIRCLE_NODE_INDEX}-latex_gen_tests-xunit.xml
+          nosetests \
+              --rednose --immediate \
+              --cover-tests --with-coverage \
+              --with-xunit --xunit-file=${xunit_output} \
+              --cover-package=${COVER_PACKAGES} \
+              latex_gen_tests
         when: always
     - run:
         name: post-circle-tests
@@ -617,4 +617,4 @@ jobs:
           bash <(curl -s https://codecov.io/bash)
     resource_class: medium+
 
-# sigil 6105153bfceb61a8929f29d46b8ad860
+# sigil 02bf15f0487d19c255d78a61610c0e43

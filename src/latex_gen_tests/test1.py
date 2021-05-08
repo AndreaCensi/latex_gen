@@ -1,2 +1,4 @@
 def test1():
-    pass
+    from latex_gen import logger
+
+    _ = logger

@@ -3,29 +3,29 @@ package_name: latex-gen-z7
 srcdir: src
 version_file: '1'
 modules:
-    - latex_gen
+- latex_gen
 
 install_requires:
-    - PyContracts3
-    - zuper-commons-z7
+- PyContracts3
+- zuper-commons-z7
 
 install_conflicts: [PACKAGENAME-*]
 tests_require: []
 
 console_scripts:
-    latex_gen_demos: latex_gen.tests.demos:main
+  latex_gen_demos: latex_gen.tests.demos:main
 
 
 nose:
-    modules:
-        - '*tests'
+  modules:
+  - '*tests'
 
 pypi:
-    upload: []
+  upload: []
 
 circleci:
-    active: true
-    test_python_versions: ['3.8']
+  active: true
+  test_python_versions: ['3.8']
 
 python_syntax_version: '3.8'
 

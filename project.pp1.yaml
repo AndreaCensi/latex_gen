@@ -9,7 +9,7 @@ install_requires:
 - PyContracts3
 - zuper-commons-z7
 
-install_conflicts: [PACKAGENAME-*]
+
 tests_require: []
 
 console_scripts:

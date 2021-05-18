@@ -1,5 +1,5 @@
-__version__ = "7.1.2105181110"
-__date__ = "2021-05-18T11:10:28.726293+00:00"
+__version__ = "7.1.2105181438"
+__date__ = "2021-05-18T14:38:35.549799+00:00"
 from zuper_commons.logs import ZLogger
 
 logger = ZLogger(__name__)

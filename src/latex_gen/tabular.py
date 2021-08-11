@@ -52,14 +52,14 @@ class Tabular(LatexEnvironment):
     def row(self):
         row = Tabular.Row(self.ncols, self.context)
         yield row
-        if row.col != self.ncols:
+        if len(row.cols) > self.ncols:
             raise Exception("Bad number of columns (found %s, required %s)" % (row.col + 1, self.ncols))
         tex = " & ".join(row.cols)
         self.context.f.write(tex)
         self.context.f.write("\\\\ \n ")
 
     def row_tex(self, *cols):
-        if len(cols) != self.ncols:
+        if len(cols) > self.ncols:
             raise Exception("Got %d cols instead of %d expected." % (len(cols), self.ncols))
         tex = " & ".join(list(cols))
         self.context.f.write(tex)

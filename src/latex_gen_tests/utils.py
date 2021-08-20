@@ -47,7 +47,8 @@ class LatexTestUtils(unittest.TestCase):
         basename = os.path.basename(filename)
         cwd = os.path.dirname(filename)
         command = ["pdflatex", "--interaction", "batchmode", basename]
-        val = subprocess.call(command, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        val = subprocess.call(command, cwd=cwd)  # , stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
         if val != 0:
             d = self.get_error_file()
             shutil.copy(filename, d)

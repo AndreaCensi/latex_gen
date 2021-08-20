@@ -19,7 +19,8 @@ class Figure(LatexEnvironment):
         env = "figure*" if self.double else "figure"
 
         with begin_end(main_context.f, env, self.placement) as f:
-            f.write("\\captionsetup[subfloat]{farskip=0pt} % Remove the top glue from subfloats\n")
+            # f.write("\\captionsetup[subfloat]{farskip=0pt} % Remove the top glue from subfloats\n")
+            f.write("\\captionsetup[subfloat]{}\n")
             f.write(self.context.f.getvalue())
             if self.label:
                 label = "\\label{%s}" % self.label

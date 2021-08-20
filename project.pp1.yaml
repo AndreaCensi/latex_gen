@@ -13,12 +13,12 @@ install_requires:
 tests_require: []
 
 console_scripts:
-  latex_gen_demos: latex_gen.tests.demos:main
+  latex_gen_demos: latex_gen_tests.demos:main
 
 
 nose:
   modules:
-  - '*tests'
+  - 'latex_gen_tests'
 
 pypi:
   upload: []

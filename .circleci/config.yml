@@ -22,7 +22,7 @@ jobs:
       # default is /usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       PATH: /root/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       COVER_PACKAGES: latex_gen,latex_gen_tests
-      TEST_PACKAGES: latex_gen latex_gen_tests
+      TEST_PACKAGES: latex_gen_tests
     docker:
     - image: ${DOCKER_REGISTRY}/zupermind/zuper-ci-3.8:z7
       auth:
@@ -108,19 +108,6 @@ jobs:
       #       make -C notebooks cleanup all
 
 
-    - run:
-        name: latex_gen
-        command: |-
-          set -euxo pipefail
-          mkdir -p out/test-results
-          xunit_output=$PWD/out/test-results/nose-${CIRCLE_NODE_INDEX}-latex_gen-xunit.xml
-          nosetests \
-              --rednose --immediate \
-              --cover-tests --with-coverage \
-              --with-xunit --xunit-file=${xunit_output} \
-              --cover-package=${COVER_PACKAGES} \
-              latex_gen
-        when: always
     - run:
         name: latex_gen_tests
         command: |-
@@ -176,7 +163,7 @@ jobs:
       # default is /usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       PATH: /root/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       COVER_PACKAGES: latex_gen,latex_gen_tests
-      TEST_PACKAGES: latex_gen latex_gen_tests
+      TEST_PACKAGES: latex_gen_tests
     docker:
     - image: ${DOCKER_REGISTRY}/zupermind/zuper-ci-3.8:z7
       auth:
@@ -263,19 +250,6 @@ jobs:
 
 
     - run:
-        name: latex_gen
-        command: |-
-          set -euxo pipefail
-          mkdir -p out/test-results
-          xunit_output=$PWD/out/test-results/nose-${CIRCLE_NODE_INDEX}-latex_gen-xunit.xml
-          nosetests \
-              --rednose --immediate \
-              --cover-tests --with-coverage \
-              --with-xunit --xunit-file=${xunit_output} \
-              --cover-package=${COVER_PACKAGES} \
-              latex_gen
-        when: always
-    - run:
         name: latex_gen_tests
         command: |-
           set -euxo pipefail
@@ -325,4 +299,4 @@ jobs:
           bash <(curl -s https://codecov.io/bash)
     resource_class: medium
 
-# sigil 93c398b92147e178af693f301d5365ca
+# sigil 7c96e5bdabe2056213cd826896b9a156

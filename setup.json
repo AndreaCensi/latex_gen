@@ -8,15 +8,13 @@
   "package_name": "latex-gen-z7",
   "entry_points": {
     "console_scripts": [
-      "latex_gen_demos = latex_gen.tests.demos:main"
+      "latex_gen_demos = latex_gen_tests.demos:main"
     ]
   },
   "zip_safe": true,
   "include_package_data": true,
   "modules": [
-    "latex_gen",
-    "latex_gen.tests",
-    "latex_gen.tests.demos"
+    "latex_gen"
   ],
   "version": "7.2",
   "author": "Andrea Censi",

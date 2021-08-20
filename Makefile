@@ -37,7 +37,7 @@ install-testing-deps:
 
 	pip install 		pipdeptree==0.13.2		bumpversion		nose==1.3.7		nose2==0.9.2		nose2-html-report==0.6.0		nose-parallel==0.3.1		nose_xunitmp==0.4.1		pre-commit==2.1.1		rednose==1.3.0		coverage==5.0.3		codecov==2.0.16		sphinx		sphinx-rtd-theme
 
-cover_packages=latex_gen,latex_gen.tests,latex_gen.tests.demos,latex_gen_tests
+cover_packages=latex_gen,latex_gen_tests
 
 # PROJECT_ROOT ?= /project
 # REGISTRY ?= docker.io
@@ -66,17 +66,17 @@ clean:
 
 test:  
 	mkdir -p  $(tr)
-	DISABLE_CONTRACTS=1 nosetests $(extra) $(coverage)  latex_gen latex_gen_tests  -v --nologcapture $(xunit)
+	DISABLE_CONTRACTS=1 nosetests $(extra) $(coverage)  latex_gen_tests  -v --nologcapture $(xunit)
 
 
 test-parallel:  
 	mkdir -p  $(tr)
-	DISABLE_CONTRACTS=1 nosetests $(extra) $(coverage) latex_gen latex_gen_tests  -v --nologcapture $(parallel) $(xunitmp)
+	DISABLE_CONTRACTS=1 nosetests $(extra) $(coverage) latex_gen_tests  -v --nologcapture $(parallel) $(xunitmp)
 
 
 test-parallel-circle:
 	mkdir -p  $(tr)
-	DISABLE_CONTRACTS=1 	NODE_TOTAL=$(CIRCLE_NODE_TOTAL) 	NODE_INDEX=$(CIRCLE_NODE_INDEX) 	nosetests $(coverage) $(xunitmp) latex_gen latex_gen_tests  -v  $(parallel)
+	DISABLE_CONTRACTS=1 	NODE_TOTAL=$(CIRCLE_NODE_TOTAL) 	NODE_INDEX=$(CIRCLE_NODE_INDEX) 	nosetests $(coverage) $(xunitmp) latex_gen_tests  -v  $(parallel)
 
 
 coverage-combine:
@@ -87,4 +87,4 @@ docs:
 	
 -include extra.mk
         
-# sigil bd0d981e591bfe07855bd41790ade14f
+# sigil 609168484efdd8eb4ab4062fdd6d5556

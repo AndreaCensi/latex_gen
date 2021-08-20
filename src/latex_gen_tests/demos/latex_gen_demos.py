@@ -1,4 +1,4 @@
-from ... import LatexDocument, compile_tex
+from latex_gen import LatexDocument, compile_tex
 import inspect
 import os
 import sys

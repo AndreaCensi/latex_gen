@@ -1,3 +1,5 @@
+from typing import Dict
+
 from .utils import latex_escape
 from contextlib import contextmanager
 import mimetypes
@@ -83,8 +85,8 @@ class LatexEnvironment(object):
     def input(self, filename):  # @ReservedAssignment
         self.context.f.write("\\input{%s}\n" % filename)
 
-    def use_package(self, name, options={}):
-        self.context.use_package(name, options)
+    def use_package(self, name, options: Dict[str, str] = None):
+        self.context.use_package(name, options or {})
 
     @contextmanager
     def figure(self, caption=None, label=None, placement="t", double=False):

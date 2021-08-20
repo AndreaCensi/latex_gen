@@ -1,15 +1,13 @@
 from io import StringIO
-from contracts import contract
-
+from typing import Dict
 
 __all__ = ["LatexContext"]
 
 
-class UsePackage(object):
-    @contract(name="str", options="dict(str:str)")
-    def __init__(self, name, options={}):
+class UsePackage:
+    def __init__(self, name: str, options: Dict[str, str] = None):
         self.name = name
-        self.options = options
+        self.options = options or {}
 
     def dump_preamble(self, f):
         options = dict_to_latex_option_string(self.options)
@@ -60,7 +58,8 @@ class LatexContext(object):
             if not name in self.packages:
                 self.packages[name] = UsePackage(name)
 
-    def use_package(self, name, options={}):
+    def use_package(self, name, options: Dict[str, str] = None):
+        options = options or {}
         if self.parent is not None:
             self.parent.use_package(name, options)
         else:

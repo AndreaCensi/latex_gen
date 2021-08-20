@@ -1,5 +1,5 @@
 from .utils import LatexTestUtils, doc_idiom
-from latex_gen.tests.utils import doc_idiom_failure
+from .utils import doc_idiom_failure
 
 
 class TestTables(LatexTestUtils):

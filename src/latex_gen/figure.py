@@ -1,4 +1,5 @@
-from . import LatexEnvironment, begin_end
+from .environment import LatexEnvironment
+from .utils import begin_end
 
 
 class Figure(LatexEnvironment):

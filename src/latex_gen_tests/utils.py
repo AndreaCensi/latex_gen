@@ -1,10 +1,11 @@
-from .. import latex_document
-from contextlib import contextmanager
 import os
 import shutil
 import subprocess
 import tempfile
 import unittest
+from contextlib import contextmanager
+
+from latex_gen import latex_document
 
 
 def doc_idiom(f):
@@ -63,6 +64,7 @@ class LatexTestUtils(unittest.TestCase):
         assert False
 
     def setUp(self):
+        # print('setting up', self)
         self.test_directory = tempfile.mkdtemp(prefix="tmp-reprep-tests")
 
     def tearDown(self):

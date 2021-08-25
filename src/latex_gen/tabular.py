@@ -1,14 +1,19 @@
-from . import LatexEnvironment
 from contextlib import contextmanager
+
+from . import LatexEnvironment
 
 
 class Tabular(LatexEnvironment):
-    allowed = ["c", "r", "l"]
+    allowed = ["c", "r", "l", "p"]
     envs = ["tabular", "longtable"]
 
     def __init__(self, alignment, context, env="tabular"):
         assert isinstance(alignment, list)
-        assert all(x in Tabular.allowed for x in alignment)
+
+        for x in alignment:
+            if '{' in x:
+                x = x[:x.index('{')]
+            assert x in Tabular.allowed, alignment
         assert env in Tabular.envs
         self.env = env
         self.ncols = len(alignment)
@@ -17,6 +22,9 @@ class Tabular(LatexEnvironment):
 
     def hline(self):
         self.context.f.write("\\hline\n")
+
+    def endhead(self):
+        self.context.f.write('\\endhead\n')
 
     class Row:
         def __init__(self, ncols, context):

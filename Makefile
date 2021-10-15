@@ -71,8 +71,7 @@ test:
 
 test-parallel:  
 	mkdir -p  $(tr)
-	DISABLE_CONTRACTS=1 nosetests $(extra) $(coverage) latex_gen_tests  -v --nologcapture $(parallel) $(
-	xunitmp)
+	DISABLE_CONTRACTS=1 nosetests $(extra) $(coverage) latex_gen_tests -v --nologcapture $(parallel) $(xunitmp)
 
 
 test-parallel-circle:
@@ -88,4 +87,4 @@ docs:
 	
 -include extra.mk
         
-# sigil f38b4b6e51fea3850b72f8460c30b155
+# sigil 3cfd0d4a1e0e0a94c5386632e6b61cb5

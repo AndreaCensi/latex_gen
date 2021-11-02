@@ -10,13 +10,13 @@ class DemoStorage:
 
 
 def latex_gen_demo(f):
-    """ Decorator for declaring a demo. """
+    """Decorator for declaring a demo."""
     DemoStorage.demo_list.append(f)
     return f
 
 
 def latex_gen_demo_failure(f):
-    """ Decorator for declaring a demo which should fail. """
+    """Decorator for declaring a demo which should fail."""
     DemoStorage.demo_list_fail.append(f)
     return f
 

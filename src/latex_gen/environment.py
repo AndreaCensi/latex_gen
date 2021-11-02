@@ -53,7 +53,7 @@ class LatexEnvironment(object):
 
     # OLD function
     def tabular_simple(self, data, row_desc, col_desc, write_col_desc=True):
-        """ Writes a tabular environment with very simple options. """
+        """Writes a tabular environment with very simple options."""
 
         def hline():
             self.context.f.write("\\hline\n")
@@ -79,7 +79,7 @@ class LatexEnvironment(object):
         self.context.f.write("\\end{tabular}\n")
 
     def tex(self, tex):
-        """ Writes raw TeX string. """
+        """Writes raw TeX string."""
         self.context.f.write(tex)
 
     def input(self, filename):  # @ReservedAssignment
@@ -231,7 +231,7 @@ class LatexEnvironment(object):
 
     @contextmanager
     def mbox(self, width="", position="c"):  # XXX: FIXME
-        """ Position: c, l, r. """
+        """Position: c, l, r."""
         env = LatexEnvironment(self.context.child())
         yield env
         self.context.preamble.write(self.context.preamble.getvalue())
@@ -241,7 +241,7 @@ class LatexEnvironment(object):
 
     @contextmanager
     def tightbox(self):
-        """ Fbox with no margin """
+        """Fbox with no margin"""
         with self.fbox("0pt") as x:
             yield x
 

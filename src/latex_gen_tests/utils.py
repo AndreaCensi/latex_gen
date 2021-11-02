@@ -36,14 +36,14 @@ class LatexTestUtils(unittest.TestCase):
             self.assert_compilable_file(filename)
 
     def assert_compilable_fragment(self, tex):
-        """ Asserts that the string *tex* is a compilable latex fragment."""
+        """Asserts that the string *tex* is a compilable latex fragment."""
         with self.get_random_file() as filename:
             with latex_document(filename) as doc:  # @UnusedVariable
                 doc.tex(tex)
             self.assert_compilable_file(filename)
 
     def assert_compilable_file(self, filename):
-        """ Asserts that a given file contains a compilable latex document. """
+        """Asserts that a given file contains a compilable latex document."""
         basename = os.path.basename(filename)
         cwd = os.path.dirname(filename)
         command = ["pdflatex", "--interaction", "batchmode", basename]

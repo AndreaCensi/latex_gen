@@ -6,7 +6,7 @@ __all__ = ["compile_tex"]
 
 
 def compile_tex(filename, cwd=None):
-    """ Raises BadTex if the file is not compilable. """
+    """Raises BadTex if the file is not compilable."""
     assert os.path.exists(filename)
     if cwd is None:
         cwd = os.path.dirname(filename)

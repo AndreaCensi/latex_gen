@@ -27,11 +27,11 @@ class LatexDocument(LatexEnvironment):
         f.write("\\end{document}\n")
 
     def fullpage(self):
-        """ Use the fullpage package. """
+        """Use the fullpage package."""
         self.use_package("fullpage")
 
     def write_to_file(self, filename):
-        """ Writes to a file, making sure the directory exists."""
+        """Writes to a file, making sure the directory exists."""
         dirname = os.path.dirname(filename)
         make_sure_dir_exists(dirname)
         with open(filename, "w") as f:

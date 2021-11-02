@@ -3,7 +3,7 @@ from . import latex_gen_demo, latex_gen_demo_failure
 
 @latex_gen_demo
 def test_table1(doc):  # @NoSelf
-    """ Completely yield-oriented """
+    """Completely yield-oriented"""
     with doc.tabular(["c", "c"]) as tabular:
         with tabular.row() as row:
             with row.cell() as c:
@@ -20,7 +20,7 @@ def test_table1(doc):  # @NoSelf
 
 @latex_gen_demo
 def test_table2(doc):  # @NoSelf
-    """ with for rows, cell_tex """
+    """with for rows, cell_tex"""
     with doc.tabular(["c", "c"]) as tabular:
         with tabular.row() as row:
             row.cell_tex("a")
@@ -68,7 +68,7 @@ def test_table_multi_bad3(doc):  # @NoSelf
 
 @latex_gen_demo
 def test_table3(doc):  # @NoSelf
-    """ with for rows, cell_tex """
+    """with for rows, cell_tex"""
     with doc.tabular(["c", "c"]) as tabular:
         tabular.row_tex("a", "b")
         tabular.row_tex("a", "b")
@@ -76,14 +76,14 @@ def test_table3(doc):  # @NoSelf
 
 @latex_gen_demo_failure
 def test_table_bad_args(doc):  # @NoSelf
-    """ Wrong args """
+    """Wrong args"""
     with doc.tabular(["c", "d"]) as tabular:  # @UnusedVariable
         pass
 
 
 @latex_gen_demo_failure
 def test_table_bad_num1(doc):  # @NoSelf
-    """ with for rows, cell_tex """
+    """with for rows, cell_tex"""
     with doc.tabular(["c", "c"]) as tabular:
         tabular.row_tex("a", "b")
         tabular.row_tex("a")

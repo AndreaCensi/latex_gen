@@ -22,5 +22,5 @@ class TestEscaping(LatexTestUtils):
         self.assert_compilable_fragment("\\$[\\]")
 
     def test_compiling_works(self):
-        """ Check that it throws an exception for invalid latex. """
+        """Check that it throws an exception for invalid latex."""
         self.assertRaises(Exception, self.assert_compilable_fragment, "\\ciao")

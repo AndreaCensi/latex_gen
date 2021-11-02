@@ -11,8 +11,8 @@ class Tabular(LatexEnvironment):
         assert isinstance(alignment, list)
 
         for x in alignment:
-            if '{' in x:
-                x = x[:x.index('{')]
+            if "{" in x:
+                x = x[: x.index("{")]
             assert x in Tabular.allowed, alignment
         assert env in Tabular.envs
         self.env = env
@@ -24,7 +24,7 @@ class Tabular(LatexEnvironment):
         self.context.f.write("\\hline\n")
 
     def endhead(self):
-        self.context.f.write('\\endhead\n')
+        self.context.f.write("\\endhead\n")
 
     class Row:
         def __init__(self, ncols, context):

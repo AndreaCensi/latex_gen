@@ -42,7 +42,7 @@ class LatexContext(object):
         return f
 
     def child(self):
-        """ Generates a child context; sharing some data """
+        """Generates a child context; sharing some data"""
         c = LatexContext(self.graphics_path)
         c.parent = self
         return c

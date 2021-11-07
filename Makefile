@@ -1,11 +1,10 @@
-
 all:
 	@echo
-	 
+
 
 template:
 	zuper-cli template
-	
+
 bump:
 	zuper-cli bump
 
@@ -35,8 +34,20 @@ install-testing-deps:
 	pip3 install --user --upgrade -r .requirements_tests.txt
 	rm .requirements_tests.txt
 
-	pip install 		pipdeptree==0.13.2		bumpversion		nose==1.3.7		nose2==0.9.2		nose2-html-report==0.6.0		nose-parallel==0.3.1		nose_xunitmp==0.4.1		pre-commit==2.1.1		rednose==1.3.0		coverage==5.0.3		codecov==2.0.16		sphinx		sphinx-rtd-theme
-
+	pip install \
+		pipdeptree\
+		bumpversion\
+		nose\
+		nose2\
+		nose2-html-report\
+		nose-parallel\
+		nose_xunitmp\
+		pre-commit\
+		rednose\
+		coverage\
+		codecov\
+		sphinx\
+		sphinx-rtd-theme
 cover_packages=latex_gen,latex_gen_tests
 
 # PROJECT_ROOT ?= /project
@@ -64,19 +75,22 @@ clean:
 	coverage erase
 	rm -rf $(out) $(coverage_dir) $(tr)
 
-test:  
+test:
 	mkdir -p  $(tr)
 	DISABLE_CONTRACTS=1 nosetests $(extra) $(coverage)  latex_gen_tests  -v --nologcapture $(xunit)
 
 
-test-parallel:  
+test-parallel:
 	mkdir -p  $(tr)
 	DISABLE_CONTRACTS=1 nosetests $(extra) $(coverage) latex_gen_tests -v --nologcapture $(parallel) $(xunitmp)
 
 
 test-parallel-circle:
 	mkdir -p  $(tr)
-	DISABLE_CONTRACTS=1 	NODE_TOTAL=$(CIRCLE_NODE_TOTAL) 	NODE_INDEX=$(CIRCLE_NODE_INDEX) 	nosetests $(coverage) $(xunitmp) latex_gen_tests  -v  $(parallel)
+	DISABLE_CONTRACTS=1 \
+	NODE_TOTAL=$(CIRCLE_NODE_TOTAL) \
+	NODE_INDEX=$(CIRCLE_NODE_INDEX) \
+	nosetests $(coverage) $(xunitmp) latex_gen_tests  -v  $(parallel)
 
 
 coverage-combine:
@@ -84,7 +98,7 @@ coverage-combine:
 
 docs:
 	sphinx-build src $(out)/docs
-	
+
 -include extra.mk
-        
-# sigil 3cfd0d4a1e0e0a94c5386632e6b61cb5
+
+# sigil 243aedc229e3c61f73c01e2779a242a8

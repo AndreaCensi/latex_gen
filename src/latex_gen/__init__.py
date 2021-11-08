@@ -1,5 +1,5 @@
 __version__ = "7.2"
-__date__ = "2021-08-14T09:53:48.807908+00:00"
+__date__ = ""
 from zuper_commons.logs import ZLogger
 
 logger = ZLogger(__name__)
@@ -16,3 +16,5 @@ from .context import *
 from .environment import *
 from .document import *
 from .frags import *
+
+logger.hello_module_finished(__name__)

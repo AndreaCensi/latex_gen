@@ -77,12 +77,12 @@ clean:
 
 test:
 	mkdir -p  $(tr)
-	DISABLE_CONTRACTS=1 nosetests $(extra) $(coverage)  latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests  -v --nologcapture $(xunit)
+	DISABLE_CONTRACTS=1 nosetests $(extra) $(coverage)  latex_gen_tests  -v --nologcapture $(xunit)
 
 
 test-parallel:
 	mkdir -p  $(tr)
-	DISABLE_CONTRACTS=1 nosetests $(extra) $(coverage) latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests -v --nologcapture $(parallel) $(xunitmp)
+	DISABLE_CONTRACTS=1 nosetests $(extra) $(coverage) latex_gen_tests -v --nologcapture $(parallel) $(xunitmp)
 
 
 test-parallel-circle:
@@ -90,7 +90,7 @@ test-parallel-circle:
 	DISABLE_CONTRACTS=1 \
 	NODE_TOTAL=$(CIRCLE_NODE_TOTAL) \
 	NODE_INDEX=$(CIRCLE_NODE_INDEX) \
-	nosetests $(coverage) $(xunitmp) latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests  -v  $(parallel)
+	nosetests $(coverage) $(xunitmp) latex_gen_tests  -v  $(parallel)
 
 
 coverage-combine:
@@ -101,4 +101,4 @@ docs:
 
 -include extra.mk
 
-# sigil 4d904a9bf71c808047af59d00c41286d
+# sigil 5104aa96d64c891ebcce6ab3b610d93b

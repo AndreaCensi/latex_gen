@@ -48,7 +48,7 @@ install-testing-deps:
 		codecov\
 		sphinx\
 		sphinx-rtd-theme
-cover_packages=latex_gen,latex_gen_tests
+cover_packages=latex_gen,latex_gen_tests,latex_gen_tests.demos,latex_gen_tests.demos.demo1,latex_gen_tests.demos.escaping,latex_gen_tests.demos.latex_gen_demos,latex_gen_tests.demos.tables,latex_gen_tests.test1,latex_gen_tests.test_escaping,latex_gen_tests.test_idions,latex_gen_tests.test_tables,latex_gen_tests.utils
 
 # PROJECT_ROOT ?= /project
 # REGISTRY ?= docker.io
@@ -77,12 +77,12 @@ clean:
 
 test:
 	mkdir -p  $(tr)
-	DISABLE_CONTRACTS=1 nosetests $(extra) $(coverage)  latex_gen_tests  -v --nologcapture $(xunit)
+	DISABLE_CONTRACTS=1 nosetests $(extra) $(coverage)  latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests  -v --nologcapture $(xunit)
 
 
 test-parallel:
 	mkdir -p  $(tr)
-	DISABLE_CONTRACTS=1 nosetests $(extra) $(coverage) latex_gen_tests -v --nologcapture $(parallel) $(xunitmp)
+	DISABLE_CONTRACTS=1 nosetests $(extra) $(coverage) latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests -v --nologcapture $(parallel) $(xunitmp)
 
 
 test-parallel-circle:
@@ -90,7 +90,7 @@ test-parallel-circle:
 	DISABLE_CONTRACTS=1 \
 	NODE_TOTAL=$(CIRCLE_NODE_TOTAL) \
 	NODE_INDEX=$(CIRCLE_NODE_INDEX) \
-	nosetests $(coverage) $(xunitmp) latex_gen_tests  -v  $(parallel)
+	nosetests $(coverage) $(xunitmp) latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests latex_gen_tests  -v  $(parallel)
 
 
 coverage-combine:
@@ -101,4 +101,4 @@ docs:
 
 -include extra.mk
 
-# sigil 243aedc229e3c61f73c01e2779a242a8
+# sigil 4d904a9bf71c808047af59d00c41286d

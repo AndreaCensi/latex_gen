@@ -54,7 +54,7 @@ jobs:
         command: |
           shyaml get-values install_requires < project.pp1.yaml > .requirements.txt
           python3 -m pip install -U pip
-          python3 -m pip install  -r .requirements.txt
+          python3 -m pip install -r .requirements.txt
           rm .requirements.txt
 
     - run:
@@ -194,7 +194,7 @@ jobs:
         command: |
           shyaml get-values install_requires < project.pp1.yaml > .requirements.txt
           python3 -m pip install -U pip
-          python3 -m pip install  -r .requirements.txt
+          python3 -m pip install -r .requirements.txt
           rm .requirements.txt
 
     - run:
@@ -334,7 +334,7 @@ jobs:
         command: |
           shyaml get-values install_requires < project.pp1.yaml > .requirements.txt
           python3 -m pip install -U pip
-          python3 -m pip install  -r .requirements.txt
+          python3 -m pip install -r .requirements.txt
           rm .requirements.txt
 
     - run:
@@ -474,7 +474,7 @@ jobs:
         command: |
           shyaml get-values install_requires < project.pp1.yaml > .requirements.txt
           python3 -m pip install -U pip
-          python3 -m pip install  -r .requirements.txt
+          python3 -m pip install -r .requirements.txt
           rm .requirements.txt
 
     - run:
@@ -587,4 +587,4 @@ jobs:
           bash <(curl -s https://codecov.io/bash)
     resource_class: medium
 
-# sigil 29de781f8ca504936b77f87ac2e6007b
+# sigil 1f29cf2255eec2c6faa1326c148d404b

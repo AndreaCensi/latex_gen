@@ -1,0 +1,4 @@
+latex_gen_tests.test1
+latex_gen_tests.test_escaping
+latex_gen_tests.test_idions
+latex_gen_tests.test_tables

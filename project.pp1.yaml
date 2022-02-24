@@ -1,36 +1,41 @@
 ---
-package_name: latex-gen-z7
+package_name: zuper-commons-z7
 srcdir: src
 version_file: '1'
 modules:
-- latex_gen
+- zuper_commons
 
 install_requires:
-- PyContracts3
-- zuper-commons-z7
+- xtermcolor
+- termcolor
+- pytz
+- webcolors
+- setuptools
+- typing_extensions
+- python-dateutil
+- aiofile
 
 
-tests_require: []
+tests_require:
+- nose
 
 console_scripts: {}
-  # latex_gen_demos: latex_gen_tests.demos:main
-
-
 nose:
   modules:
-  - '*tests'
+  - '*_tests'
+
 
 pypi:
   upload: []
 
 circleci:
   active: true
-  test_python_versions: ['3.10']
+  test_python_versions: ['3.7', '3.8', '3.9', '3.10']
 
-python_syntax_version: '3.8'
+python_syntax_version: '3.7'
 
 url: https://github.com/zupermind/PACKAGENAME
 author: Andrea Censi
 author_email: info@zupermind.com
-short_description: ''
+short_description: this is the desc
 full_description: ''

@@ -18,7 +18,7 @@ console_scripts: {}
 
 nose:
   modules:
-  - 'latex_gen_tests'
+  - '*tests'
 
 pypi:
   upload: []

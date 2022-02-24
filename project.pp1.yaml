@@ -12,8 +12,8 @@ install_requires:
 
 tests_require: []
 
-console_scripts:
-  latex_gen_demos: latex_gen_tests.demos:main
+console_scripts: {}
+  # latex_gen_demos: latex_gen_tests.demos:main
 
 
 nose:

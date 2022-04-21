@@ -1,2 +1,3 @@
 pre-circle-tests:
-	apt-get install texlive-latex-base
+	apt-get update
+	apt-get install -y texlive-latex-base

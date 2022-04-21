@@ -6,6 +6,7 @@ import unittest
 from contextlib import contextmanager
 
 from latex_gen import latex_document
+from zuper_commons.types import ZException
 
 
 def doc_idiom(f):
@@ -52,7 +53,10 @@ class LatexTestUtils(unittest.TestCase):
         if val != 0:
             d = self.get_error_file()
             shutil.copy(filename, d)
-            raise Exception("Could not compile file %r. Dumped on %s." % (filename, d))
+            with open(filename, "r") as f:
+                contents = f.read()
+
+            raise ZException("Could not compile file", filename=filename, contents=contents)
 
         # TODO: include error from stderr
 
@@ -70,7 +74,7 @@ class LatexTestUtils(unittest.TestCase):
 
     def tearDown(self):
         # # TODO: cleanup, remove dir
-        print(("Deleting %r.." % (self.test_directory)))
+        print(f"Deleting {self.test_directory!r}..")
         pass
 
     @contextmanager

@@ -1,6 +1,8 @@
 import os
 
-__all__ = ["make_sure_dir_exists"]
+__all__ = [
+    "make_sure_dir_exists",
+]
 
 
 def make_sure_dir_exists(d):

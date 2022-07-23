@@ -2,7 +2,9 @@ import os
 import subprocess
 from .structures import BadTex
 
-__all__ = ["compile_tex"]
+__all__ = [
+    "compile_tex",
+]
 
 
 def compile_tex(filename, cwd=None):

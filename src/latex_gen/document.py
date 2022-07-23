@@ -3,8 +3,9 @@ from .file_utils import make_sure_dir_exists
 from .environment import LatexEnvironment
 from .context import LatexContext
 
-
-__all__ = ["LatexDocument"]
+__all__ = [
+    "LatexDocument",
+]
 
 
 class LatexDocument(LatexEnvironment):

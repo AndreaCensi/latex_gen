@@ -1,7 +1,9 @@
 from io import StringIO
 from typing import Dict
 
-__all__ = ["LatexContext"]
+__all__ = [
+    "LatexContext",
+]
 
 
 class UsePackage:

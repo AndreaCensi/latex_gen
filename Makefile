@@ -48,6 +48,8 @@ install-testing-deps:
 		codecov\
 		sphinx\
 		sphinx-rtd-theme
+
+pack::
 cover_packages=latex_gen,latex_gen_tests,latex_gen_tests.demos,latex_gen_tests.demos.demo1,latex_gen_tests.demos.escaping,latex_gen_tests.demos.latex_gen_demos,latex_gen_tests.demos.tables,latex_gen_tests.test1,latex_gen_tests.test_escaping,latex_gen_tests.test_idions,latex_gen_tests.test_tables,latex_gen_tests.utils
 
 # PROJECT_ROOT ?= /project
@@ -101,4 +103,4 @@ docs:
 
 -include extra.mk
 
-# sigil 109729b2404e631b9a70d1ee7bd7f527
+# sigil 897147e31000c7c6dfc9900def71b200

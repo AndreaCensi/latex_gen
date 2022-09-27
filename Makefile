@@ -11,14 +11,6 @@ bump:
 upload:
 	zuper-cli upload
 
-upload-old:
-	rm -f dist/*
-	rm -rf src/*.egg-info
-	python3 setup.py sdist
-	devpi use $(TWINE_REPOSITORY_URL)
-	devpi login $(TWINE_USERNAME) --password $(TWINE_PASSWORD)
-	devpi upload --verbose dist/*
-
 black:
 	black -l 110 --target-version py310 src
 
@@ -48,8 +40,6 @@ install-testing-deps:
 		codecov\
 		sphinx\
 		sphinx-rtd-theme
-
-pack::
 cover_packages=latex_gen,latex_gen_tests,latex_gen_tests.demos,latex_gen_tests.demos.demo1,latex_gen_tests.demos.escaping,latex_gen_tests.demos.latex_gen_demos,latex_gen_tests.demos.tables,latex_gen_tests.test1,latex_gen_tests.test_escaping,latex_gen_tests.test_idions,latex_gen_tests.test_tables,latex_gen_tests.utils
 
 # PROJECT_ROOT ?= /project
@@ -103,4 +93,4 @@ docs:
 
 -include extra.mk
 
-# sigil 897147e31000c7c6dfc9900def71b200
+# sigil ca8a33640c70db3b48c9fb14d48be299

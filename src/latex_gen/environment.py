@@ -116,7 +116,7 @@ class LatexEnvironment(object):
         filename = os.path.join(self.context.graphics_path, basename)
         dirname = os.path.dirname(filename)
         if not os.path.exists(dirname):
-            os.makedirs(dirname)
+            os.makedirs(dirname, exist_ok=True)
 
         with open(filename, "w") as f:
             f.write(data)
@@ -134,7 +134,7 @@ class LatexEnvironment(object):
         # make sure dir exists
         dirname = os.path.dirname(filename)
         if not os.path.exists(dirname):
-            os.makedirs(dirname)
+            os.makedirs(dirname, exist_ok=True)
 
         # sys.stderr.write('writing to %r' % filename)
         with open(filename, "w") as f:

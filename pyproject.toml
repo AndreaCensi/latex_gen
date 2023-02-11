@@ -1,0 +1,19 @@
+[project]
+name = "latex-gen-z7"
+version = "7.2"
+authors = [{name = "Andrea Censi", email = "info@zupermind.com"}]
+dependencies = ["PyContracts3", "zuper-commons-z7"]
+
+[project.scripts]
+
+[tool]
+[tool.poetry]
+name = "latex-gen-z7"
+version = "7.2"
+description = ""
+authors = ["Andrea Censi <info@zupermind.com>"]
+packages = [{include = "latex_gen", from = "src"}]
+
+[tool.setuptools]
+packages = ["latex_gen"]
+package-dir = {"" = "src"}

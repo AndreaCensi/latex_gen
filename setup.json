@@ -11,8 +11,23 @@
   },
   "zip_safe": true,
   "include_package_data": true,
-  "modules": [
+  "packages": [
     "latex_gen"
+  ],
+  "py_modules": [
+    "latex_gen",
+    "latex_gen.compile_latex",
+    "latex_gen.context",
+    "latex_gen.document",
+    "latex_gen.environment",
+    "latex_gen.envs",
+    "latex_gen.figure",
+    "latex_gen.file_utils",
+    "latex_gen.frags",
+    "latex_gen.ifs",
+    "latex_gen.structures",
+    "latex_gen.tabular",
+    "latex_gen.utils"
   ],
   "version": "7.2",
   "author": "Andrea Censi",

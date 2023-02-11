@@ -23,6 +23,7 @@ jobs:
       DEPS_INSTALL_TIMEOUT: 10m
       COVER_PACKAGES: latex_gen,latex_gen_tests
       TEST_PACKAGES: latex_gen_tests
+      PIP_INDEX_URL: ${PIP_INDEX_URL_SRC}
     docker:
     - image: ${DOCKER_REGISTRY}/${DOCKER_TARGET_ORG}/${DOCKER_REPO_PREFIX}zuper-ci-3.10:${Z_DISTRO}
       auth:
@@ -177,6 +178,7 @@ jobs:
       DEPS_INSTALL_TIMEOUT: 10m
       COVER_PACKAGES: latex_gen,latex_gen_tests
       TEST_PACKAGES: latex_gen_tests
+      PIP_INDEX_URL: ${PIP_INDEX_URL_SRC}
     docker:
     - image: ${DOCKER_REGISTRY}/${DOCKER_TARGET_ORG}/${DOCKER_REPO_PREFIX}zuper-ci-3.11:${Z_DISTRO}
       auth:
@@ -321,4 +323,4 @@ jobs:
           ./codecov  
     resource_class: small
 
-# sigil d52c2c17ae57a80d853da99d3abc3a75
+# sigil ff0a0c65a43bc4bfe784e08178e91b71

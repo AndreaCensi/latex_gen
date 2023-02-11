@@ -6,7 +6,7 @@ modules:
 - latex_gen
 
 install_requires:
-- PyContracts3
+- PyContracts3>=7
 - zuper-commons-z7
 
 

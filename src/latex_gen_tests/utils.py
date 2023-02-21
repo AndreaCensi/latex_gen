@@ -66,7 +66,7 @@ class LatexTestUtils(unittest.TestCase):
             candidate = pattern % i
             if not os.path.exists(candidate):
                 return candidate
-        assert False
+        raise AssertionError
 
     def setUp(self):
         # print('setting up', self)

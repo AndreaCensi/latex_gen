@@ -22,3 +22,8 @@ packages = [
     "latex_gen",
     ]
 package-dir = {"" = "src"}
+
+[build-system]
+requires = [
+    "poetry-core>=1.0.0",]
+build-backend = "poetry.core.masonry.api"

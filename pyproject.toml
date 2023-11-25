@@ -2,12 +2,7 @@
 name = "latex-gen-z7"
 version = "7.2"
 authors = [{name = "Andrea Censi", email = "AndreaCensi@users.noreply.github.com"}]
-dependencies = [
-    "PyContracts3>=7",
-    "zuper-commons-z7",
-    ]
 
-[tool]
 [tool.poetry]
 name = "latex-gen-z7"
 version = "7.2"
@@ -17,11 +12,11 @@ packages = [
     {from = "src", include = "latex_gen"},
     ]
 
-[tool.setuptools]
-packages = [
-    "latex_gen",
-    ]
-package-dir = {"" = "src"}
+[tool.poetry.dependencies]
+PyContracts3 = ">=7"
+zuper-commons-z7 = "*"
+
+[tool.poetry.group.test.dependencies]
 
 [build-system]
 requires = [

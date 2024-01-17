@@ -93,9 +93,7 @@ class LatexEnvironment(object):
         self.use_package("caption")
         from .figure import Figure
 
-        figure = Figure(
-            caption=caption, label=label, placement=placement, context=self.context.child(), double=double
-        )
+        figure = Figure(caption=caption, label=label, placement=placement, context=self.context.child(), double=double)
         yield figure
         figure.dump(main_context=self.context)
 

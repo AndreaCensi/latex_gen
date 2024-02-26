@@ -17,9 +17,7 @@ def latex_document(filename_or_stream, graphics_path=None, document_class="artic
         if graphics_path is None:
             graphics_path = os.getcwd()
 
-    document = LatexDocument(
-        graphics_path=graphics_path, document_class=document_class, class_options=class_options
-    )
+    document = LatexDocument(graphics_path=graphics_path, document_class=document_class, class_options=class_options)
     yield document
 
     if is_filename:

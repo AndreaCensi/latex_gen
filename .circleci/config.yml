@@ -76,7 +76,6 @@ jobs:
           export PIP_INDEX_URL="${PIP_INDEX_URL_SRC}"
           echo PIP_INDEX_URL="${PIP_INDEX_URL}"
           shyaml get-values install_requires < project.pp1.yaml > .requirements.txt
-          python3 -m pip install -U pip
           timeout ${DEPS_INSTALL_TIMEOUT} python3 -m pip install  -r .requirements.txt
           rm .requirements.txt
 
@@ -268,7 +267,6 @@ jobs:
           export PIP_INDEX_URL="${PIP_INDEX_URL_BIN}"
           echo PIP_INDEX_URL="${PIP_INDEX_URL}"
           shyaml get-values install_requires < project.pp1.yaml > .requirements.txt
-          python3 -m pip install -U pip
           timeout ${DEPS_INSTALL_TIMEOUT} python3 -m pip install  -r .requirements.txt
           rm .requirements.txt
 
@@ -404,4 +402,4 @@ jobs:
           timeout 1m ./codecov || true
     resource_class: small
 
-# sigil bdc0a260d5d769ea234f227d10da50d2
+# sigil 8832cf849031a5dbeb00c1a1fd4fe581

@@ -12,7 +12,7 @@ upload:
 	zuper-cli upload
 
 black:
-	black -l 110 --target-version py311 src
+	black -l 110 --target-version py312 src
 
 install-deps:
 	pip3 install --user shyaml
@@ -93,4 +93,4 @@ docs:
 
 -include extra.mk
 
-# sigil 96e2b55d292d2f3925c360a80a8ea998
+# sigil ba250f4f097b02c2265454ed9513ba93

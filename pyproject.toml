@@ -2,6 +2,9 @@
 name = "latex-gen-z7"
 version = "7.2"
 authors = [{name = "Andrea Censi", email = "AndreaCensi@users.noreply.github.com"}]
+dependencies = [
+    "PyContracts3>=7",
+    "zuper-commons-z7",]
 
 [tool.poetry]
 name = "latex-gen-z7"
@@ -17,6 +20,7 @@ PyContracts3 = ">=7"
 zuper-commons-z7 = "*"
 
 [tool.poetry.group.test.dependencies]
+python = "^3.12"
 
 [build-system]
 requires = [

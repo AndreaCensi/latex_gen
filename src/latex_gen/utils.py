@@ -1,7 +1,5 @@
 from contextlib import contextmanager
 
-from typing import Dict
-
 
 def latex_escape(s):
     # Do this at the beginning
@@ -16,11 +14,11 @@ def latex_escape(s):
 
 
 @contextmanager
-def begin_end(stream, env_name, options: Dict[str, str] = None):
+def begin_end(stream, env_name, options: dict[str, str] = None):
     options = options or {}
     stream.write("\\begin{%s}" % env_name)
     if options:
-        stream.write("[%s]" % (options))
+        stream.write("[%s]" % options)
     stream.write("%\n")
 
     yield stream

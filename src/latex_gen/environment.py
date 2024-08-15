@@ -1,10 +1,9 @@
-from typing import Dict
-
-from .utils import latex_escape
-from contextlib import contextmanager
 import mimetypes
 import os
+from contextlib import contextmanager
+
 from contracts import contract
+from .utils import latex_escape
 
 MIME_PNG = "image/png"
 MIME_JPG = "image/jpeg"
@@ -85,7 +84,7 @@ class LatexEnvironment(object):
     def input(self, filename):  # @ReservedAssignment
         self.context.f.write("\\input{%s}\n" % filename)
 
-    def use_package(self, name, options: Dict[str, str] = None):
+    def use_package(self, name, options: dict[str, str] = None):
         self.context.use_package(name, options or {})
 
     @contextmanager

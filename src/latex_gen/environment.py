@@ -19,10 +19,10 @@ class LatexEnvironment(object):
         self.context.f.write("\\color[rgb]{%s,%s,%s}" % (r, g, b))
 
     def hfill(self):
-        self.context.f.write("\\hfill\ \n")
+        self.context.f.write("\\hfill\\ \n")
 
     def vfill(self):
-        self.context.f.write("\\vfill\ \n")
+        self.context.f.write("\\vfill\\ \n")
 
     def hspace(self, size):
         self.context.f.write("\\hspace{%s}" % size)
@@ -31,14 +31,14 @@ class LatexEnvironment(object):
         self.context.f.write("\\vspace{%s}" % size)
 
     def parbreak(self):
-        self.context.f.write("\par%\n")
+        self.context.f.write("\\par%\n")
         # self.context.f.write('\n\n')
 
     def linebreak(self):
         self.context.f.write("\\\\")
 
     def pagebreak(self):
-        self.context.f.write("\\pagebreak\ \n")
+        self.context.f.write("\\pagebreak\\ \n")
 
     def rule(self, width, height, color="gray"):
         self.context.f.write("{\\color{%s}\\rule{%s}{%s}}%%\n" % (color, width, height))

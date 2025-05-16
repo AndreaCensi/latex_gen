@@ -1,7 +1,9 @@
-from latex_gen import LatexDocument, compile_tex
 import inspect
 import os
 import sys
+
+from latex_gen import LatexDocument
+from latex_gen import compile_tex
 
 
 class DemoStorage:

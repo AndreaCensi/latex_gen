@@ -1,4 +1,5 @@
-from .utils import LatexTestUtils, doc_idiom
+from .utils import LatexTestUtils
+from .utils import doc_idiom
 from .utils import doc_idiom_failure
 
 

@@ -1,4 +1,5 @@
-from . import latex_gen_demo, latex_gen_demo_failure
+from . import latex_gen_demo
+from . import latex_gen_demo_failure
 
 
 @latex_gen_demo

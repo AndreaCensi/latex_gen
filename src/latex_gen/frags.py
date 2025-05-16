@@ -1,7 +1,10 @@
-from . import LatexEnvironment, LatexContext, LatexDocument
-from .file_utils import make_sure_dir_exists
-from contextlib import contextmanager
 import os
+from contextlib import contextmanager
+
+from . import LatexContext
+from . import LatexDocument
+from . import LatexEnvironment
+from .file_utils import make_sure_dir_exists
 
 
 @contextmanager

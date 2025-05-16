@@ -1,7 +1,8 @@
 import os
-from .file_utils import make_sure_dir_exists
-from .environment import LatexEnvironment
+
 from .context import LatexContext
+from .environment import LatexEnvironment
+from .file_utils import make_sure_dir_exists
 
 __all__ = [
     "LatexDocument",

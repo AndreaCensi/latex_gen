@@ -1,5 +1,6 @@
 import os
 import subprocess
+
 from .structures import BadTex
 
 __all__ = [

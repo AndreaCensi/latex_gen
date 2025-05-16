@@ -3,6 +3,7 @@ import os
 from contextlib import contextmanager
 
 from contracts import contract
+
 from .utils import latex_escape
 
 MIME_PNG = "image/png"

@@ -5,8 +5,9 @@ import tempfile
 import unittest
 from contextlib import contextmanager
 
-from latex_gen import latex_document
 from zuper_commons.types import ZException
+
+from latex_gen import latex_document
 
 
 def doc_idiom(f):

@@ -133,6 +133,5 @@ out
 *pyc
 error_doc*tex
 latex_gen_demos
-.noseids
 error_doc*
 dist

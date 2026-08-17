@@ -3,11 +3,14 @@ name = "latex-gen-z7"
 version = "7.2"
 readme = ""
 description = ""
-authors = [{ name = "Andrea Censi", email = "AndreaCensi@users.noreply.github.com" }]
-dependencies = ["PyContracts3>=7", "zuper-commons-z7"]
+authors = [{name = "Andrea Censi", email = "AndreaCensi@users.noreply.github.com"}]
+dependencies = [
+    "PyContracts3>=7",
+    "zuper-commons-z7",]
 
 [project.optional-dependencies]
-test = []
+test = [
+    ]
 
 [tool.poetry]
 name = "latex-gen-z7"
@@ -15,8 +18,8 @@ version = "7.2"
 description = ""
 authors = ["Andrea Censi <AndreaCensi@users.noreply.github.com>"]
 packages = [
-    { from = "src", include = "latex_gen" },
-]
+    {from = "src", include = "latex_gen"},
+    ]
 
 [tool.poetry.dependencies]
 PyContracts3 = ">=7"
@@ -26,5 +29,6 @@ zuper-commons-z7 = "*"
 python = ">=3.12"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = [
+    "poetry-core>=1.0.0",]
 build-backend = "poetry.core.masonry.api"
